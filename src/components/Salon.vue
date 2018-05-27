@@ -15,54 +15,57 @@
 		<div class="input-wrapper">
 			<div class="container">
 				<div class="row">
+					<div class="selected-wrapper w-100">
+						<div class="selected-services d-flex justify-content-between align-items-center" 
+						v-for="(elem, index) in selectedServices">
+							<span class="left">
+								<span class="name">{{elem.type.name}}</span>
+								<br>
+								<span class="duration">{{elem.type.minute}} минут</span>	
+							</span>
+							<span class="right">
+							  {{elem.type.price}}
+							</span>
+							<i class="fas fa-times"
+								v-on:click="getService(index)"></i>
+						</div>	
+					</div>
 					<form class="w-100">
 						  <div class="form-group">
-						    <label for="example" class="choice">Выбирите услугу</label>
-						    <div class="autocomplete">
+						    <label for="example" class="choice"
+						    		v-show="!choosenServices">Выбирите услугу</label>
+						    <div class="autocomplete" 
+						    	v-on:click="showList = !showList">
 						    	<input type="text" class="form-control" id="example" placeholder="ДОБАВИТЬ УСЛУГУ">
-						    	<i class="fa fa-chevron-down" aria-hidden="true" 
-						    		v-on:click="showList = !showList"></i>	
+						    	<i class="fa fa-chevron-down" aria-hidden="true"></i>	
 						    </div> 
 						  </div>
 					</form>
-					<div class="list" v-show="showList">
-						<ul class="list-group">
-						  <li class="list-group-item categori">Волосы</li>
-						  <li class="list-group-item d-flex justify-content-between align-items-top">
-						  	<span class="left">
-							  	<span class="name">Лаконы</span>
-							  	<br>
-							  	<span class="duration">60 минут</span>	
-						  	</span>
-						  	<span class="right">4000 T</span>
-						  	
-						  </li>
-						  <li class="list-group-item">Morbi leo risus</li>
-						  <li class="list-group-item">Porta ac consectetur ac</li>
-						  <li class="list-group-item">Vestibulum at eros</li>
+					<div class="list" 
+						v-show="showList">
+						<ul class="list-group"
+							v-for="(item, index) in itemsReservation"
+							:key="index">
+						  	<li class="list-group-item categori">{{item.name}}</li>
+						 	<li class="list-group-item d-flex justify-content-between				align-items-top"
+						 			v-for="(elem, i) in item.types"
+						 			:key="i"
+						 			v-on:click="getType(elem, item.name, item.masters)">
+						  		<span class="left">
+							  		<span class="name">{{elem.name}}</span>
+							  		<br>
+							  		<span class="duration">{{elem.minute}} минут</span>	
+						  		</span>
+						  		<span class="right">{{elem.price}}</span>
+						  	</li>
 						</ul>
-						<ul class="list-group">
-						  <li class="list-group-item active">Cras justo odio</li>
-						  <li class="list-group-item">Dapibus ac facilisis in</li>
-						  <li class="list-group-item">Morbi leo risus</li>
-						  <li class="list-group-item">Porta ac consectetur ac</li>
-						  <li class="list-group-item">Vestibulum at eros</li>
-						</ul>	
-						<ul class="list-group">
-						  <li class="list-group-item active">Cras justo odio</li>
-						  <li class="list-group-item">Dapibus ac facilisis in</li>
-						  <li class="list-group-item">Morbi leo risus</li>
-						  <li class="list-group-item">Porta ac consectetur ac</li>
-						  <li class="list-group-item">Vestibulum at eros</li>
-						</ul>	
-						<ul class="list-group">
-						  <li class="list-group-item active">Cras justo odio</li>
-						  <li class="list-group-item">Dapibus ac facilisis in</li>
-						  <li class="list-group-item">Morbi leo risus</li>
-						  <li class="list-group-item">Porta ac consectetur ac</li>
-						  <li class="list-group-item">Vestibulum at eros</li>
-						</ul>		
 					</div>
+					<div class="wrapper-masters"
+						v-if="checkParents"
+						v-for="(elem, index) in selectedServices[0]">
+						{{elem}} <br>
+					</div>
+					<div v-else>error!</div>
 				</div>
 			</div>
 			
@@ -104,6 +107,18 @@
 	.input-wrapper {
 		padding: 15px 0;
 	}
+	.selected-wrapper {
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px rgba(0, 0, 0, 0.07);
+	}
+	.selected-services {
+		padding: 8px 35px 9px 20px;
+	    font-size: 15px;
+	    border: 1px solid #e2e2e2;
+	    background-color: #fff;
+	    margin-bottom: -1px;
+	    position: relative;
+	}
 	.form-group {
 		margin-bottom: 0;
 	}
@@ -128,20 +143,25 @@
 	.form-group .choice {
 		color: #444;
 	}
-	.fa-chevron-down {
+	.fa-chevron-down,
+	.fa-times {
 		position: absolute;
 	    top: 18px;
 	    right: 14px;
+		font-weight: 600;
 	    font-size: 16px;
 	    cursor: pointer;
+	}
+	.fa-chevron-down {
 	}
 	.form-group .autocomplete {
 		position: relative;
 	}
 	.list {
-		max-height: 540px;
+		max-height: 500px;
 		overflow: auto;
 		width: 100%;
+		box-shadow: 0 3px 9px rgba(0, 0, 0, 0.1);
 	}
 	.list .categori {
 		font-size: 1.3rem;
@@ -163,26 +183,65 @@
 	    border-left-color: #bf2e23;
 	    outline: 0;
 	}
-	.list li.list-group-item .name {
+	.left .name {
 		font-weight: bold;
 		font-size: 1.2rem;
 	}
-	.list li.list-group-item .duration {
+	.left .duration {
     	color: #808080;
 	}
-	.list li.list-group-item .right {
+	.right {
     	font-size: 1.1rem;
 	}
 
 </style>
 
 <script>
+	import {mapGetters} from 'vuex';
+	import {mapActions} from 'vuex';
+
 	export default {
 		data() {
 			return {
-				showList: true,
+				showList: false,
 			}
-		}
-	}
+		},
+		computed: {
+			...mapGetters('reservations', {
+				itemsReservation: 'itemsReservation',
+				selectedServices: 'selectedServices',
+			}),
+			choosenServices() {
+				return this.selectedServices.length > 0;
+			},
+			checkParents() {
+				if(this.selectedServices.length > 0) {
+					var name = 	this.selectedServices[0].parentname;
+					for(var i=0; i<this.selectedServices.length; i++) {
+						if(this.selectedServices[i].parentname !== name){
+							return false;
+						}
+					}
+					return true;
 
+				}
+			},
+		},
+		methods: {
+			getType(data, parentname, masters) {
+				this.$store.dispatch('reservations/addType',
+				{
+					type: data,
+					parentname: parentname,
+					masters: masters,
+				} 
+					);
+				this.showList = false;
+			},
+			getService(index) {
+				return this.$store.dispatch('reservations/deleteService', index);
+			},
+		}
+
+	}
 </script>
