@@ -50,7 +50,7 @@
 						 	<li class="list-group-item d-flex justify-content-between				align-items-top"
 						 			v-for="(elem, i) in item.types"
 						 			:key="i"
-						 			v-on:click="getType(elem, item.name, item.masters)">
+						 			v-on:click="getType(elem, item.name)">
 						  		<span class="left">
 							  		<span class="name">{{elem.name}}</span>
 							  		<br>
@@ -61,9 +61,8 @@
 						</ul>
 					</div>
 					<div class="wrapper-masters"
-						v-if="checkParents"
-						v-for="(elem, index) in selectedServices[0]">
-						{{elem}} <br>
+						v-if="checkParents" v-for="elem in getMasters">
+						{{elem}}
 					</div>
 					<div v-else>error!</div>
 				</div>
@@ -226,14 +225,31 @@
 
 				}
 			},
+			getMasters() {
+				var masters = [];
+				for(var i=0; i<this.selectedServices.length; i++) {
+					for(var elem in this.selectedServices[i].type.masters) masters.push(this.selectedServices[i].type.masters[elem]);
+				}
+				var countMasters = masters.reduce((acc, el) => {
+						    acc[el] = (acc[el] || 0) + 1;
+						    return acc;
+  				}, {});
+  				var newMasters = [];
+  				for(var element in countMasters) {
+  					if(countMasters[element] == this.selectedServices.length) {
+	  						newMasters.push(element);
+	  				}
+  				}
+
+				return newMasters;
+			}
 		},
 		methods: {
-			getType(data, parentname, masters) {
+			getType(data, parentname) {
 				this.$store.dispatch('reservations/addType',
 				{
 					type: data,
 					parentname: parentname,
-					masters: masters,
 				} 
 					);
 				this.showList = false;

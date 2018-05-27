@@ -11,29 +11,38 @@ export default {
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Anna",
+							master2: "Nastya",
+							master3: "Natasha",
+						},
+					},
+					{
+						name: "bla bla",
+						minute: 60,
+						price: "4000 T",
+						masters: {
+							master2: "Nastya",
+							master3: "Natasha",
+						},
 					},
 					{
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
-					},
-					{
-						name: "Лаконы",
-						minute: 60,
-						price: "4000 T",
+						masters: {
+							master1: "Anna",
+							master3: "Natasha",
+						},
 					},
 					{
 						name: "Кератиновое выпрямление волос",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master3: "Natasha",
+						},
 					},
-				],
-				masters: [
-						{
-							master1: 'Master1',
-							master2: 'Master2',
-							master3: 'Master3',
-						}
 				],
 			},
 			{
@@ -61,13 +70,6 @@ export default {
 						price: "4000 T",
 					},
 				],
-				masters: [
-						{
-							master1: 'Master1',
-							master2: 'Master2',
-							master3: 'Master3',
-						}
-				],
 			},
 			{
 				name: "Массаж",
@@ -93,13 +95,6 @@ export default {
 						minute: 60,
 						price: "4000 T",
 					},
-				],
-				masters: [
-						{
-							master1: 'Master1',
-							master2: 'Master2',
-							master3: 'Master3',
-						}
 				],
 			},
 			{
@@ -127,13 +122,6 @@ export default {
 						price: "4000 T",
 					},
 				],
-				masters: [
-						{
-							master1: 'Master1',
-							master2: 'Master2',
-							master3: 'Master3',
-						}
-				],
 			},
 			{
 				name: "Депипляция и жпиляция",
@@ -160,13 +148,6 @@ export default {
 						price: "4000 T",
 					},
 				],
-				masters: [
-						{
-							master1: 'Master1',
-							master2: 'Master2',
-							master3: 'Master3',
-						}
-				],
 			},
 			{
 				name: "Косметология",
@@ -192,13 +173,6 @@ export default {
 						minute: 60,
 						price: "4000 T",
 					},
-				],
-				masters: [
-						{
-							master1: 'Master1',
-							master2: 'Master2',
-							master3: 'Master3',
-						}
 				],
 			},
 		],
