@@ -1,5 +1,5 @@
 <template>
-	<div class="row justify-content-md-center">
+	<div class="row justify-content-md-center wrapper-content">
 		<div class="col-md-5">
 			<h2 class="text-center">Забыли пароль</h2>
 			<form @submit.prevent>
@@ -25,10 +25,10 @@
 	    border-radius: 4px;
 	    font-size: 14px;
 	}
-	form input{
+	input{
 		margin-bottom: 10px;
 	}
-	form input.btn {
+	input.btn {
 		display: block;
 		width: 100%;
 		color: #fff;

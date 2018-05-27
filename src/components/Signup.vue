@@ -1,5 +1,5 @@
 <template>
-	<div class="row justify-content-md-center">
+	<div class="row justify-content-md-center wrapper-content">
 		<div class="col-md-5">
 			<h2 class="text-center">Создание учетной записи</h2>
 			<form @submit.prevent>
@@ -69,4 +69,9 @@ p.obez {
 	font-size: 1.25rem;
 	font-style: italic;
 }
+</style>
+<style>
+	.wrapper-content {
+		width: 1024px;
+	}
 </style>

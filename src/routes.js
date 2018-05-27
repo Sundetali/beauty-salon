@@ -3,7 +3,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-import Content from './components/Content.vue';
+import Content from './components/MainContent.vue';
 import Kontakty from './components/Kontakti.vue';
 import SignUp from './components/Signup.vue';
 import Vhod from './components/Vhod.vue';

@@ -1,23 +1,28 @@
 <template>
-	<div>
-		<h4 class="caption">Контакты</h4>
-		<div class="box d-flex">
-			<div class="map"></div>
-			<div class="address-wrapper d-flex flex-column">
-				<div class="address address-item">
-					<span class="bold ">Адрес:</span>
-					<span>г. Алматы, ул. Богенбай батыра 150, 4 этаж</span>
-				</div>
-				<div class="phone address-item">
-					<span class="bold">Телефоны:</span>
-					<span>+7 (707) 757-23-48</span>
-				</div>
-				<div class="email address-item">
-					<span class="bold">Email:</span>
-					<span>info@zapis.kz</span>
+	<div class="wrapper-content">
+		<div class="container">
+			<h4 class="caption">Контакты</h4>
+			<div class="row">
+				<div class="box d-flex">
+					<div class="map"></div>
+					<div class="address-wrapper d-flex flex-column">
+						<div class="address address-item">
+							<span class="bold ">Адрес:</span>
+							<span>г. Алматы, ул. Богенбай батыра 150, 4 этаж</span>
+						</div>
+						<div class="phone address-item">
+							<span class="bold">Телефоны:</span>
+							<span>+7 (707) 757-23-48</span>
+						</div>
+						<div class="email address-item">
+							<span class="bold">Email:</span>
+							<span>info@zapis.kz</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+		
 	</div>
 </template>
 
@@ -34,6 +39,7 @@
 }
 
 .box {
+	width: 100%;
 	border: 1px solid #e2e2e2;
     background-color: #fff;
     border-radius: 2px;

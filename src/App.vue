@@ -28,31 +28,26 @@
 				  </div>
 			</div>
 		</nav>
-		<div class="content">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-11">
-						<router-view></router-view>	
-					</div>	
-				</div>
-			</div>
+		<div class="content d-flex justify-content-center">
+			<router-view></router-view>			
 		</div>
 		<footer>
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-11">
-						<div class="row">
-							<div class="col-md-6">
-								<p class="caption">Скачайте бесплатное приложение в<br> AppStore и Google Play</p>
-								<div class="img-links d-flex align-items-center">
-									<span class="footer-img"><img src="./assets/img/logo_footer.png" alt=""></span>
-									<a class="footer-img" href="#"><img src="./assets/img/app_store.png" alt=""></a>
-									<a class="footer-img" href="#"><img src="./assets/img/google_play.png"alt=""></a>
+			<div class="top-footer">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-11 d-flex justify-content-around">
+								<div>
+									<p class="caption">Скачайте бесплатное приложение в<br> AppStore и Google Play</p>
+									<div class="img-links d-flex align-items-center">
+										<span class="footer-img"><img src="./assets/img/logo_footer.png" alt=""></span>
+										<a class="footer-img" href="#"><img src="./assets/img/app_store.png" alt=""></a>
+										<a class="footer-img" href="#"><img src="./assets/img/google_play.png"alt=""></a>
+									</div>
 								</div>
-							</div>
-							<div class="col-md-6">
-								<img class="app-screen mx-auto" src="./assets/img/footer_apps_screens.png" alt="">
-							</div>
+								<div>
+									<img class="app-screen mx-auto" src="./assets/img/footer_apps_screens.png" alt="">
+								</div>
+							
 						</div>
 					</div>
 				</div>
@@ -88,7 +83,6 @@
 		font-family: 'Roboto', sans-serif;
 	    font-size: 12px;
 	    line-height: 1.2;
-	    color: #444;
 	    background-color: #fff;
 	}
 	* {
@@ -149,7 +143,7 @@
 	.content {
 	    background-color: #f6f6f6;
 	    min-height: 500px;
-	    padding: 60px 0 65px;
+	    padding: 47px 0 65px;
 	}
 	footer {
 		padding: 45px 0 0;
