@@ -177,6 +177,8 @@ export default {
 			},
 		],
 		selectedServices: [],
+		selectedMaster: '',
+		idSalon: '',
 	},
 	getters: {
 		itemsReservation(state) {
@@ -184,6 +186,12 @@ export default {
 		},
 		selectedServices(state) {
 			return state.selectedServices;
+		},
+		selectedMaster(state) {
+			return state.selectedMaster;
+		},
+		idSalon(state) {
+			return state.idSalon;
 		}
 	},
 	mutations: {
@@ -192,6 +200,15 @@ export default {
 		},
 		deleteService(state, index) {
 			return state.selectedServices.splice(index, 1);
+		},
+		addMaster(state, masterName) {
+			return state.selectedMaster = masterName;
+		},
+		deleteMaster(state) {
+			return state.selectedMaster = '';
+		},
+		addData(state, id) {
+			return state.idSalon = id;
 		}
 	},
 	actions: {
@@ -200,6 +217,15 @@ export default {
 		},
 		deleteService(store, index) {
 			return store.commit('deleteService', index);
+		},
+		addMaster(store, masterName) {
+			return store.commit('addMaster', masterName);
+		},
+		deleteMaster(store) {
+			return store.commit('deleteMaster');
+		},
+		addData(store, id) {
+			return store.commit('addData', id);
 		}
 	}
 }

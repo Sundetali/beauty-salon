@@ -15,59 +15,155 @@
 		<div class="input-wrapper">
 			<div class="container">
 				<div class="row">
-					<div class="selected-wrapper w-100">
-						<div class="selected-services d-flex justify-content-between align-items-center" 
-						v-for="(elem, index) in selectedServices">
-							<span class="left">
-								<span class="name">{{elem.type.name}}</span>
-								<br>
-								<span class="duration">{{elem.type.minute}} минут</span>	
-							</span>
-							<span class="right">
-							  {{elem.type.price}}
-							</span>
-							<i class="fas fa-times"
-								v-on:click="getService(index)"></i>
-						</div>	
+					<template v-if="!showTable">
+						<div class="wrapper-res-list w-100">
+							<form>
+							  <div class="form-group">
+							    <label for="example" class="choice">Выбирите услугу</label>
+								<div class="selected-services d-flex justify-content-between align-items-center" 
+									v-for="(elem, index) in selectedServices">
+									<span class="left">
+										<span class="name">{{elem.type.name}}</span>
+										<br>
+										<span class="duration">{{elem.type.minute}} минут</span>	
+									</span>
+									<span class="right">
+									  {{elem.type.price}}
+									</span>
+									<i class="fas fa-times"
+										v-on:click="getService(index)"></i>
+								</div>
+							    <div class="autocomplete mt-2" 
+							    	v-on:click="showList = !showList">
+							    	<input type="text" class="form-control" id="example" placeholder="ДОБАВИТЬ УСЛУГУ">
+							    	<i class="fa fa-chevron-down" aria-hidden="true"></i>	
+							    </div> 
+							  </div>
+							</form>
+							<div class="list" 
+							v-show="showList">
+								<ul class="list-group"
+									v-for="(item, index) in itemsReservation"
+									:key="index">
+								  	<li class="list-group-item categori">{{item.name}}</li>
+								 	<li class="list-group-item list-item d-flex justify-content-between	align-items-top"
+								 			v-for="(elem, i) in item.types"
+								 			:key="i"
+								 			v-on:click="getType(elem, item.name)">
+								  		<span class="left">
+									  		<span class="name">{{elem.name}}</span>
+									  		<br>
+									  		<span class="duration">{{elem.minute}} минут</span>	
+								  		</span>
+								  		<span class="right">{{elem.price}}</span>
+								  	</li>
+								</ul>
+							</div>
+						</div>
+						<template v-if="checkParents">
+							<div class="wrapper-masters mt-4 w-100">
+								<form @submit.prevent>
+								  <div class="form-group">
+								    <label for="master" class="choice">Выбирите мастера</label>
+								    <div class="selected-services"
+								    	v-show="selectedMaster != ''">
+										<span class="left">
+											<span class="name">{{selectedMaster}}</span>	
+										</span>
+										<i class="fas fa-times master-icon"
+											v-on:click="getMasterDel()"></i>
+									</div>
+								    <div class="autocomplete" 
+								    	v-on:click="showMasters = !showMasters">
+								    	<input type="text" class="form-control" id="master" placeholder="ДОБАВИТЬ МАСТЕРА">
+								    	<i class="fa fa-chevron-down" aria-hidden="true"></i>	
+								    </div> 
+								  </div>
+								</form>
+								<div class="list" 
+								v-show="showMasters">
+									<ul class="list-group">
+									  	<li class="list-group-item list-item" 
+										v-for="(master, index) in getMasters"
+										:key="index"
+										v-on:click="getMaster(index)">
+										<span class="left">
+									  		<span class="name">{{master}}</span>
+									  		<br>
+									  		<span class="duration">
+									  			тип: {{selectedServices[0].parentname}}
+									  		</span>	
+								  		</span>
+											
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="wrapper-field w-100 mt-4">
+								<div class="contact-data">
+									Контактные данные
+								</div>
+								<form @submit.prevent>
+									<div class="wrapper-group d-flex">
+										<div class="col-md-6 pl-0">
+											    <label class="field" for="nameField">Ваше имя</label>
+											    <input type="text" class="form-control" id="nameField" placeholder="Введите ваше имя"
+											    		v-model="username">
+										</div>
+							
+									  	<div class="col-md-6 pr-0">
+											    <label class="field" for="phoneField">Мобильный телефон</label>
+											    <input type="text" class="form-control" id="phoneField" placeholder="Введите телефон"
+											    		v-model="phoneNumber">
+										</div>	
+									</div>
+									<input type="button" class="btn btn-big btn-primaryy btn-control mx-auto mt-3" value="ЗАПИСАТЬСЯ"
+									:disabled="info"
+									v-on:click="showTable = !showTable">	
+								</form>
+							</div>		
+						</template>
+						<div v-else-if="selectedServices.length > 0" class="error-message">
+							К сожалению, в салоне нет мастера, который может выполнить все выбранные Вами услуги. Поэтому Вам необходимо сделать несколько записей или удалить услуги 
+						</div>
+					</template>
+					<div v-else class="reservation-info-box box w-100">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+								  <th scope="row">Салон:</th>
+								  <td>{{getSalon.name}}</td>
+								</tr>
+								<tr>
+								  <th scope="row">Адрес:</th>
+								  <td>{{getSalon.address}}</td>
+								</tr>
+								<tr v-for="(elem, index) in selectedServices" :key='index'>
+								  <th scope="row">Услуга:</th>
+								  <td>
+								  	<span>{{elem.type.name}}</span>
+								  	<span>{{elem.type.minute}} минут</span>
+								  	<span>{{elem.type.price}}</span>
+								  </td>
+								</tr>
+								<tr>
+								  <th scope="row">Мастер:</th>
+								  <td>{{selectedMaster}}</td>
+								</tr>
+								<tr>
+								  <th scope="row">Клиент:</th>
+								  <td>{{username}}</td>
+								</tr>
+								<tr>
+								  <th scope="row">Телефон:</th>
+								  <td>{{phoneNumber}}</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<form class="w-100">
-						  <div class="form-group">
-						    <label for="example" class="choice"
-						    		v-show="!choosenServices">Выбирите услугу</label>
-						    <div class="autocomplete" 
-						    	v-on:click="showList = !showList">
-						    	<input type="text" class="form-control" id="example" placeholder="ДОБАВИТЬ УСЛУГУ">
-						    	<i class="fa fa-chevron-down" aria-hidden="true"></i>	
-						    </div> 
-						  </div>
-					</form>
-					<div class="list" 
-						v-show="showList">
-						<ul class="list-group"
-							v-for="(item, index) in itemsReservation"
-							:key="index">
-						  	<li class="list-group-item categori">{{item.name}}</li>
-						 	<li class="list-group-item d-flex justify-content-between				align-items-top"
-						 			v-for="(elem, i) in item.types"
-						 			:key="i"
-						 			v-on:click="getType(elem, item.name)">
-						  		<span class="left">
-							  		<span class="name">{{elem.name}}</span>
-							  		<br>
-							  		<span class="duration">{{elem.minute}} минут</span>	
-						  		</span>
-						  		<span class="right">{{elem.price}}</span>
-						  	</li>
-						</ul>
-					</div>
-					<div class="wrapper-masters"
-						v-if="checkParents" v-for="elem in getMasters">
-						{{elem}}
-					</div>
-					<div v-else>error!</div>
+					
 				</div>
-			</div>
-			
+			</div>	
 		</div>
 	</div>
 </template>
@@ -121,7 +217,8 @@
 	.form-group {
 		margin-bottom: 0;
 	}
-	.form-group label {
+	.form-group label,
+	.contact-data {
 		font-weight: bold;
     	font-size: 16px;
     	margin-bottom: 10px;
@@ -171,13 +268,13 @@
 	.list li.list-group-item {
 		border: none;
 	}
-	.list li.list-group-item+li {
+	.list li.list-item {
 		border-bottom: 2px solid #e2e2e2;
 		padding-left: 25px;
 		border-left: 4px solid transparent;
 		cursor: pointer;
 	}
-	.list li.list-group-item+li:hover {
+	.list li.list-item:hover {
 		background-color: #f9ebe9;
 	    border-left-color: #bf2e23;
 	    outline: 0;
@@ -192,6 +289,72 @@
 	.right {
     	font-size: 1.1rem;
 	}
+	.error-message {
+	    padding: 6px 8px;
+	    margin: 5px 0 6px 0;
+	    color: #b94a48;
+	    background-color: #f2dede;
+	    border-color: #eed3d7;
+	    border-radius: 4px;
+	    font-size: 14px;
+	}
+	.master-icon {
+		top: 10px!important;
+	}
+	.contact-data {
+		color: #444;
+	}
+	.wrapper-group .field {
+		font-weight: bold;
+		font-size: 14px;
+	    line-height: 1.2;
+	    color: #444;
+	}
+	.wrapper-group input[type=text] {
+		display: block;
+	    width: 100%;
+	    line-height: 1.3;
+	    color: #333;
+	    background-color: #fff;
+	    border: 1px solid #a9a9a9;
+	    padding: 8px 12px;
+	    border-radius: 4px;
+	    font-size: 14px;
+	}
+	.wrapper-group input[type=text]:focus {
+		border-color: #bf2e23;
+	}
+	.btn {
+	    display: block;
+	    cursor: pointer;
+	    line-height: 1;
+	    text-align: center;
+	    vertical-align: middle;
+	    color: inherit;
+	    padding: 11px 18px;
+	    border: 1px solid transparent;
+	    border-radius: 18px;
+	    font-weight: 500;
+	    background-color: inherit;
+	    text-transform: uppercase;
+	    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+	    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+	    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+	    -o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+	}
+	.btn.btn-primaryy {
+	    color: #bf2e23;
+	    border-color: #bf2e23;
+	}
+	.btn.btn-big {
+	    padding: 14px 22px 13px;
+	    font-size: 15px;
+	    border-radius: 22px;
+	}
+	.btn.btn-primaryy:hover{
+	    color: #fff;
+	    background-color: #bf2e23;
+	}
 
 </style>
 
@@ -203,15 +366,29 @@
 		data() {
 			return {
 				showList: false,
+				showMasters: false,
+				username: '',
+				phoneNumber: '',
+				showTable: false,
 			}
 		},
 		computed: {
 			...mapGetters('reservations', {
 				itemsReservation: 'itemsReservation',
 				selectedServices: 'selectedServices',
+				selectedMaster: 'selectedMaster',
+				idSalon: 'idSalon',
+				info: 'info',
 			}),
-			choosenServices() {
-				return this.selectedServices.length > 0;
+			...mapGetters('salony', {
+				items: 'items',
+			}),
+			getSalon() {
+				for(var key in this.items) {
+						if(this.idSalon == this.items[key].id) {
+							return this.items[key];
+						}
+				}
 			},
 			checkParents() {
 				if(this.selectedServices.length > 0) {
@@ -240,22 +417,35 @@
 	  						newMasters.push(element);
 	  				}
   				}
-
 				return newMasters;
-			}
+			},
+			info() {
+				if(this.selectedServices.length > 0 && this.selectedMaster != ''
+					&& this.username != '' && this.phoneNumber != ''){
+					return false;
+				}
+				return true;
+			},
 		},
 		methods: {
 			getType(data, parentname) {
 				this.$store.dispatch('reservations/addType',
-				{
-					type: data,
-					parentname: parentname,
-				} 
-					);
+					{
+						type: data,
+						parentname: parentname,
+					} 
+				);
 				this.showList = false;
 			},
 			getService(index) {
 				return this.$store.dispatch('reservations/deleteService', index);
+			},
+			getMaster(index) {
+				this.$store.dispatch('reservations/addMaster', this.getMasters[index]);
+				this.showMasters = false;
+			},
+			getMasterDel() {
+				return this.$store.dispatch('reservations/deleteMaster');
 			},
 		}
 

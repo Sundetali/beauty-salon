@@ -46,7 +46,8 @@
 											<span class="ml-2">Сегодня записалось<br>{{item.itemNumber}}  человека </span>
 										</span>
 										<router-link :to="'/salon/'+item.id+'/reservations'">
-											<input type="button" class="btn zapis-button"  value="ЗАПИСАТЬСЯ">	
+											<input type="button" class="btn zapis-button" value="ЗАПИСАТЬСЯ"
+											v-on:click="selectData(item.id)">	
 										</router-link>
 									</div>
 								</div>	
@@ -59,109 +60,115 @@
 	</div> 
 </template>
 
-<script>
-	import {mapGetters} from 'vuex';
-
-	export default {
-		computed: {
-			...mapGetters('salony', {
-				items: 'items'
-			}),
-			get(index) {
-				return '../assets/img/'+index+'.jpg';
-			}
-		},
-	}
-</script>
-
 <style scoped>
 
-.content-search {
-	margin: 20px 0 10px;
-}
-.content-search .search {
-	box-shadow: 0 2px 5px rgba(0, 0, 0 , 0.2);
-	-webkit-box-shadow:0 2px 5px rgba(0, 0, 0 , 0.2);
-}
+	.content-search {
+		margin: 20px 0 10px;
+	}
+	.content-search .search {
+		box-shadow: 0 2px 5px rgba(0, 0, 0 , 0.2);
+		-webkit-box-shadow:0 2px 5px rgba(0, 0, 0 , 0.2);
+	}
 
-.form-control {
-	box-shadow: 0 2px 5px rgba(0, 0, 0 , 0.2)!important;
-	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0 , 0.2)!important;
-    padding: 8px 15px!important;
-    border: 1px solid #cccccc!important;
-    -webkit-border-radius: 3px!important;
-    -moz-border-radius: 3px!important;
-    border-radius: 3px!important; 
-}
-.content-answer .banner {
-	transition: box-shadow 0.3s ease-in-out;
-	margin-bottom: 30px;
-}
-.content-answer .banner:hover{
-	box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
-.content-items .zapis-button {
-	color: #bf2e23;
-    border-color: #bf2e23;
-    background-color: #fff;
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 15px;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-.caption {
-	font-size: 1.6rem;
-	line-height: 4rem;
-	font-weight: 550;
-}
-.content-items .item-box {
-	margin-bottom: 20px;
-	transition: box-shadow 0.3s ease-in-out;
-	background: #fff;
-}
+	.form-control {
+		box-shadow: 0 2px 5px rgba(0, 0, 0 , 0.2)!important;
+		-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0 , 0.2)!important;
+	    padding: 8px 15px!important;
+	    border: 1px solid #cccccc!important;
+	    -webkit-border-radius: 3px!important;
+	    -moz-border-radius: 3px!important;
+	    border-radius: 3px!important; 
+	}
+	.content-answer .banner {
+		transition: box-shadow 0.3s ease-in-out;
+		margin-bottom: 30px;
+	}
+	.content-answer .banner:hover{
+		box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+	    -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+	}
+	.content-items .zapis-button {
+		color: #bf2e23;
+	    border-color: #bf2e23;
+	    background-color: #fff;
+	    font-size: 11px;
+	    padding: 3px 10px;
+	    border-radius: 15px;
+	    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+	    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+	}
+	.caption {
+		font-size: 1.6rem;
+		line-height: 4rem;
+		font-weight: 550;
+	}
+	.content-items .item-box {
+		margin-bottom: 20px;
+		transition: box-shadow 0.3s ease-in-out;
+		background: #fff;
+	}
 
-.content-items .zapis-button:hover {
-	color: #fff;
-    background-color: #bf2e23;
-}	
-.content-items .items-right {
-	width: 100%;
-	padding: 20px;
-}
+	.content-items .zapis-button:hover {
+		color: #fff;
+	    background-color: #bf2e23;
+	}	
+	.content-items .items-right {
+		width: 100%;
+		padding: 20px;
+	}
 
-.content-items .zapis-info span {
-	font-size: 13px;
-	display: block;
-	color: #444;
-}
-.content-items .zapis-info span.name {
-	font-size: 15px;
-    font-weight: 550;
-    margin: 3px 0;
-} 
-.reservation-сount span {
-	line-height: 1;
-	font-size: 13px;
-    color: #707070;
-}
-.reservation-сount .icon {
-	background: #fff url(../assets/img/reservation_count_icon.svg) no-repeat;
-	background-size: 40px 40px;
-	width: 19px;
-    height: 16px;
-    display: inline-block;
-}
+	.content-items .zapis-info span {
+		font-size: 13px;
+		display: block;
+		color: #444;
+	}
+	.content-items .zapis-info span.name {
+		font-size: 15px;
+	    font-weight: 550;
+	    margin: 3px 0;
+	} 
+	.reservation-сount span {
+		line-height: 1;
+		font-size: 13px;
+	    color: #707070;
+	}
+	.reservation-сount .icon {
+		background: #fff url(../assets/img/reservation_count_icon.svg) no-repeat;
+		background-size: 40px 40px;
+		width: 19px;
+	    height: 16px;
+	    display: inline-block;
+	}
 
-.content-items .item-box:hover{
-	cursor: pointer;
-	box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
+	.content-items .item-box:hover{
+		cursor: pointer;
+		box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+	    -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+	}
 </style>
 <style>
 	.wrapper-maincontent {
 		max-width: 1024px;
 } 
 </style>
+
+
+<script>
+	import {mapGetters} from 'vuex';
+
+	export default {
+		computed: {
+			...mapGetters('salony', {
+				items: 'items',
+			}),
+			get(index) {
+				return '../assets/img/'+index+'.jpg';
+			},
+		},
+		methods: {
+			selectData(id) {
+				return this.$store.dispatch('reservations/addData', id);
+			},
+		}
+	}
+</script>
