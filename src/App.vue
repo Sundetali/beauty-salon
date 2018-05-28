@@ -34,8 +34,7 @@
 		<footer>
 			<div class="top-footer">
 				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-md-11 d-flex justify-content-around">
+					<div class="row justify-content-around">
 								<div>
 									<p class="caption">Скачайте бесплатное приложение в<br> AppStore и Google Play</p>
 									<div class="img-links d-flex align-items-center">
@@ -47,23 +46,18 @@
 								<div>
 									<img class="app-screen mx-auto" src="./assets/img/footer_apps_screens.png" alt="">
 								</div>
-							
-						</div>
 					</div>
 				</div>
 			</div>
 			<div class="bottom-menu">
 				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-md-11">		
-							<ul class="d-flex justify-content-between">
+					<div class="row">
+							<ul class="d-flex justify-content-between w-100 mb-0">
 								<li><a href="#">Как записаться онлайн?</a></li>
 								<li><a href="#">Хотите видеть Ваш салон у нас на сайте?</a></li>
 								<li><a href="#">Контакты</a></li>
 								<li>2017 - 2018 © ZAPIS'KZ</li>
-								<li>Разработка сайта: khangroup.kz</li>
 							</ul>
-						</div>
 					</div>
 				</div>
 			</div>			
@@ -104,6 +98,14 @@
 	input.form-control:focus { 
 	    box-shadow: none;
 	    -webkit-box-shadow: none;
+	}
+	h1 {
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
+		font-weight: 550;
+	}
+	.container {
+		margin: 0 auto;
+    	max-width: 1044px;
 	}
 	.btn {
 	    border-radius: 15px;

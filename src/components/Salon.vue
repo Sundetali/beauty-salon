@@ -5,10 +5,10 @@
 				<div class="row">
 					<ul class="breadcrumb">
 						<li><a href="#">Все салоны</a></li>
-						<li><a href="#">Салон красоты Vse Svoi</a></li>
+						<li><a href="#">{{getSalon.type}} {{getSalon.name}}</a></li>
 						<li>Онлайн запись</li>
 					</ul>
-					<h1 class="mb-10 w-100">Студия красоты Nailfie.Kz</h1>
+					<h1 class="mb-10 w-100">{{getSalon.type}} {{getSalon.name}}</h1>
 				</div>
 			</div>
 		</div>
@@ -119,7 +119,7 @@
 									</div>
 									<input type="button" class="btn btn-big btn-primaryy btn-control mx-auto mt-3" value="ЗАПИСАТЬСЯ"
 									:disabled="info"
-									v-on:click="showTable = !showTable">	
+									v-on:click="getTable()">	
 								</form>
 							</div>		
 						</template>
@@ -447,6 +447,12 @@
 			getMasterDel() {
 				return this.$store.dispatch('reservations/deleteMaster');
 			},
+
+			getTable() {
+				this.$store.dispatch('reservations/clearServices');
+				this.$store.dispatch('reservations/clearMaster');
+				return this.showTable = !this.showTable;
+			}
 		}
 
 	}

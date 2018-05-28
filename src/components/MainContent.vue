@@ -3,11 +3,11 @@
 		<div class="content-search">
 			<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-md-5">
+					<div class="col-md-6">
 						<form @submit.prevent>
 							<div class="form-group d-flex">
-							   	<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Найди лучшие салоны">
-							  	<button class="search">search</button>
+							   	<input type="text" class="form-control search-input" id="exampleInputEmail1" placeholder="Найди лучшие салоны">
+							  	<button class="search"><i class="fa fa-search"></i></button>
 							</div>
 						</form>
 					</div>
@@ -66,19 +66,36 @@
 		margin: 20px 0 10px;
 	}
 	.content-search .search {
-		box-shadow: 0 2px 5px rgba(0, 0, 0 , 0.2);
-		-webkit-box-shadow:0 2px 5px rgba(0, 0, 0 , 0.2);
+		height: 40px;
+    	padding: 0 18px;    
+    	background: #EDEDED;
+		border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	}
+	.content-search .search:hover {
+		height: 42px;
+    	padding: 0 18px;    
+    	background: #EDEDED;
+		border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+		margin: 0;
 	}
 
-	.form-control {
+	.search-input {
 		box-shadow: 0 2px 5px rgba(0, 0, 0 , 0.2)!important;
 		-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0 , 0.2)!important;
 	    padding: 8px 15px!important;
 	    border: 1px solid #cccccc!important;
 	    -webkit-border-radius: 3px!important;
 	    -moz-border-radius: 3px!important;
-	    border-radius: 3px!important; 
-	}
+	    border-radius: 3px!important;
+	    width: 400px;
+	    height: 40px;
+	    padding: 15px;
+	    margin-bottom: 20px;
+	    color: #333333;
+    	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    	font-size: 1.2rem;
+    	margin-right: 0;
+	} 
 	.content-answer .banner {
 		transition: box-shadow 0.3s ease-in-out;
 		margin-bottom: 30px;

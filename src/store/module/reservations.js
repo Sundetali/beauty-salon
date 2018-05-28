@@ -209,7 +209,13 @@ export default {
 		},
 		addData(state, id) {
 			return state.idSalon = id;
-		}
+		},
+		clearServices(state) {
+			return state.selectedServices = [];
+		},
+		clearMaster(state) {
+			return state.selectedMaster = '';
+		},
 	},
 	actions: {
 		addType(store, data) {
@@ -226,6 +232,12 @@ export default {
 		},
 		addData(store, id) {
 			return store.commit('addData', id);
+		},
+		clearServices(store) {
+			return store.commit('clearServices');
+		},
+		clearMaster(store) {
+			return store.commit('clearMaster');
 		}
 	}
 }
