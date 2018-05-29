@@ -53,9 +53,11 @@
 				<div class="container">
 					<div class="row">
 							<ul class="d-flex justify-content-between w-100 mb-0">
-								<li><a href="#">Как записаться онлайн?</a></li>
+								<li><router-link to='/instrukciya'>Как записаться онлайн?</router-link></li>
 								<li><a href="#">Хотите видеть Ваш салон у нас на сайте?</a></li>
-								<li><a href="#">Контакты</a></li>
+								<li>
+									<router-link to='/kontakty'>Контакты</router-link>
+								</li>
 								<li>2017 - 2018 © ZAPIS'KZ</li>
 							</ul>
 					</div>
@@ -100,7 +102,7 @@
 	    -webkit-box-shadow: none;
 	}
 	h1 {
-		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 		font-weight: 550;
 	}
 	.container {

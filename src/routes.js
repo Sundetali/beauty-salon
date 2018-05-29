@@ -9,6 +9,10 @@ import SignUp from './components/Signup.vue';
 import Vhod from './components/Vhod.vue';
 import ForgotPassword from './components/ForgotPassword.vue';
 import Salon from './components/Salon.vue';
+import Instrukciya from './components/Instrukciya.vue';
+import SalonData from './components/SalonData.vue';
+
+
 
 const routes = [
 	{
@@ -41,9 +45,14 @@ const routes = [
 		component: Salon,
 	},
 	{
-		path: '*',
-		components: 'E404'
-	}
+		path: '/instrukciya',
+		component: Instrukciya,
+	},
+	{
+		path: '/salon/:nameId',
+		component: SalonData,
+	},
+
 ];
 
 export const router = new VueRouter({

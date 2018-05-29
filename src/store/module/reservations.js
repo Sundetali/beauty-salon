@@ -53,21 +53,37 @@ export default {
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Natalya",
+							master2: "Larisa",
+							master3: "Tanya",
+						},
 					},
 					{
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Natalya",
+							master2: "Larisa",
+						},
 					},
 					{
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Natalya",
+							master3: "Tanya"
+						},
 					},
 					{
 						name: "Кератиновое выпрямление волос",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master3: "Tanya",
+						},
 					},
 				],
 			},
@@ -79,21 +95,38 @@ export default {
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Zarina",
+							master2: "Kamilla",
+							master3: "Gaukhar",
+						},
 					},
 					{
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Zarina",
+							master2: "Kamilla",
+						},
 					},
 					{
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master2: "Kamilla",
+							master3: "Gaukhar",
+						},
 					},
 					{
 						name: "Кератиновое выпрямление волос",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Zarina",
+							master2: "Kamilla",
+						},
 					},
 				],
 			},
@@ -105,21 +138,37 @@ export default {
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Maria",
+						},
 					},
 					{
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Maria",
+							master2: "Natasha",
+						},
 					},
 					{
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master2: "Natasha",
+							master3: "Anna",
+						},
 					},
 					{
 						name: "Кератиновое выпрямление волос",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Maria",
+							master2: "Natasha",
+							master3: "Anna",
+						},
 					},
 				],
 			},
@@ -131,21 +180,40 @@ export default {
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Alikhan",
+							master2: "Nurs",
+							master3: "Yelnar",
+						},
+
 					},
 					{
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Alikhan",
+							master2: "Nurs",
+						},
 					},
 					{
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master2: "Nurs",
+							master3: "Yelnar",
+						},
 					},
 					{
 						name: "Кератиновое выпрямление волос",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Alikhan",
+							master2: "Nurs",
+							master3: "Yelnar",
+						},
 					},
 				],
 			},
@@ -157,21 +225,38 @@ export default {
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master3: "Yelnar",
+						},
 					},
 					{
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Alikhan",
+							master2: "Nurs",
+							master3: "Yelnar",
+						},
 					},
 					{
 						name: "Лаконы",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Alikhan",
+							master2: "Nurs",
+						},
 					},
 					{
 						name: "Кератиновое выпрямление волос",
 						minute: 60,
 						price: "4000 T",
+						masters: {
+							master1: "Alikhan",
+							master2: "Nurs",
+							master3: "Yelnar",
+						},
 					},
 				],
 			},

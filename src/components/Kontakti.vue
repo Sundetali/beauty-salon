@@ -1,8 +1,8 @@
 <template>
 	<div class="wrapper-content">
 		<div class="container">
-			<h4 class="caption mx-auto">Контакты</h4>
 			<div class="row">
+				<h4 class="caption">Контакты</h4>
 				<div class="box d-flex flex-wrap">
 					<div class="map"></div>
 					<div class="address-wrapper d-flex flex-column">
@@ -52,7 +52,6 @@
 
 .box {
 	max-width: 1004px;
-	margin-left: auto;
 	width: 100%;
 	border: 1px solid #e2e2e2;
     background-color: #fff;

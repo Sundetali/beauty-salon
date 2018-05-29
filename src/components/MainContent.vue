@@ -18,7 +18,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<img class="banner" src="../assets/img/banner1.jpg" alt="Как записаться онлайн?">
+						<router-link to="/instrukciya">
+							<img class="banner" src="../assets/img/banner1.jpg" alt="Как записаться онлайн?">	
+						</router-link>		
 					</div>
 					<div class="col-md-6">
 						<img class="banner" src="../assets/img/banner2.jpg" alt="Хотите видеть Ваш салон у нас на сайте?">
@@ -32,26 +34,30 @@
 				<div class="row">
 					<template v-for="(item, index) in items">
 						<div class="col-md-6">
-							<div class="item-box d-flex" >
-								<img :src="item.img.sample" height="172" width="172" alt="">
-								<div class="items-right d-flex flex-column justify-content-between">
-									<div class="zapis-info">
-										<span>{{item.type}}</span>
-										<span class="name">{{item.name}}</span>
-										<span class="mw-100">{{item.address}}</span>
-									</div>
-									<div class="item-bottom d-flex justify-content-between align-items-center  flex-wrap">
-										<span class="reservation-сount d-flex align-items-center">
-											<span class="icon"></span>
-											<span class="ml-2">Сегодня записалось<br>{{item.itemNumber}}  человека </span>
-										</span>
-										<router-link :to="'/salon/'+item.id+'/reservations'">
-											<input type="button" class="btn zapis-button" value="ЗАПИСАТЬСЯ"
-											v-on:click="selectData(item.id)">	
-										</router-link>
-									</div>
-								</div>	
-							</div>
+							<router-link :to="'/salon/'+item.name+'-'+item.id"
+										 class="to-salon-data">
+								<div class="item-box d-flex"
+									v-on:click="selectData(item.id)">
+									<img :src="item.img.sample" height="172" width="172" alt="">
+									<div class="items-right d-flex flex-column justify-content-between">
+										<div class="zapis-info">
+											<span>{{item.type}}</span>
+											<span class="name">{{item.name}}</span>
+											<span class="mw-100">{{item.address}}</span>
+										</div>
+										<div class="item-bottom d-flex justify-content-between align-items-center  flex-wrap">
+											<span class="reservation-сount d-flex align-items-center">
+												<span class="icon"></span>
+												<span class="ml-2">Сегодня записалось<br>{{item.itemNumber}}  человека </span>
+											</span>
+											<router-link :to="'/salon/'+item.id+'/reservations'">
+												<input type="button" class="btn zapis-button" value="ЗАПИСАТЬСЯ"
+												v-on:click="selectData(item.id)">	
+											</router-link>
+										</div>
+									</div>	
+								</div>
+							</router-link>
 						</div>	
 					</template>
 				</div>
@@ -73,6 +79,9 @@
 	    background-color: #f5f5f5;
 	    border-radius: 0;
 	    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	}
+	.to-salon-data {
+		text-decoration: none;
 	}
 	.content-search .search:hover {    
     	background: #EDEDED;
@@ -185,6 +194,7 @@
 		},
 		methods: {
 			selectData(id) {
+				console.log(id);
 				return this.$store.dispatch('reservations/addData', id);
 			},
 		}

@@ -1,0 +1,285 @@
+<template>
+	<div class="salon-info-wrap w-100">
+		<div class="salon-info">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<div class="header-box w-100">
+							<ul class="breadcrumb">
+								<li><a href="#">Все салоны</a></li>
+								<li><a href="#">{{getSalon.type}} {{getSalon.name}}</a></li>
+							</ul>
+							<div class="heading-group">
+								<p class="salon mt-2">{{getSalon.type}}</p>
+								<h1 class="name">{{getSalon.name}}</h1>
+							</div>
+						</div>
+						<section class="contacts d-flex justify-content-between align-items-center">
+								<div class="contacts-in">
+									<p>
+										<span class="ico-wrap">
+											<i class="icon icon-location"></i>
+										</span>
+										<span>пр.Назарбаева, д.248, 3 этаж, офис 232 </span>
+										<meta content="Алматы, Казахстан" />
+									</p>
+									<p>
+										<span class="ico-wrap">
+											<i class="icon icon-phone"></i>
+										</span>
+											<span>+7 (777) 139-05-55</span><br />
+											<span>+7 (700) 978-94-95</span><br />
+											<span>+7 (701) 765-73-74</span><br />
+											<span>+7 (707) 773-57-25</span><br />
+									</p>
+									<p>
+										<span class="ico-wrap">
+											<i class="icon icon-time"></i>
+										</span>08:00 - 22:00
+									</p>	
+								</div>
+								<router-link :to="'/salon/'+'item.id'+'/reservations'">
+									<input type="button" class="btn btn-filled btn-big" value="ЗАПИСАТЬСЯ"
+											v-on:click="selectData(item.id)">	
+								</router-link>			
+								
+						</section>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="all-services">
+						<h2>УСЛУГИ</h2>
+						<div id="accordion" 
+							:v-for="(item, index) in items" 
+							:key="index"
+							>
+							<section class="services-category box">
+							    <div id="headingOne">
+								    <h2 class="mb-0">
+								        <a data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								     
+								        </a>
+							     	</h2>
+							    </div>
+							    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+							    	<div class="list-service">
+										<section class="service d-flex justify-content-between">
+											<div class="w-50 service-left">
+												<h2>Boost Up - объем для волос</h2>
+												<p class="time">90 минут</p>
+											</div>
+											<div class="w-50 service-right text-right pr-5">
+													<span class="price">6000 ₸ - 10000 ₸
+													</span>
+												<a href="/salon/85/reservations?serviceIds=19810" class="btn btn-primaryy reservation-btn">ЗАПИСАТЬСЯ</a>
+											</div>
+										</section>
+							      	</div>
+							    </div>
+							</section>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<style scoped>
+	.salon-info {
+	    background-color: #fff;
+	    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	    padding: 20px 0 15px;
+	}
+	.salon-info .heading-group {
+	    margin-bottom: 25px;
+	}
+	.salon-info-wrap h1 {
+	    font-size: 23px;
+	    font-weight: 500;
+	}
+	ul.breadcrumb {
+		padding: 5px 0 10px;
+	    font-size: 14px;
+	    margin: 0;
+	    color: #656565;
+	    background-color: #fff!important;
+	}
+	ul.breadcrumb li a {
+		color: #656565;
+    	text-decoration: none;
+	}
+	ul.breadcrumb li+li:before {
+	    padding: 0 4px;
+	    color: #656565;
+	    content: ">\00a0";
+	    padding-left: 6px;
+	}
+	.salon-info .heading-group {
+		margin-bottom: 20px;
+	}
+	.salon-info .heading-group p {
+		font-size: 14px;
+		margin: 3px 0 0;
+	}
+	.salon-info .contacts {
+	    font-size: 15px;
+	}
+	.salon-info .contacts p {
+		padding-left: 30px;
+		margin-bottom: 10px;
+		position: relative;
+	}
+	.salon-info .contacts p .ico-wrap {
+	    display: block;
+	    color: #ff2222;
+	    position: absolute;
+	    left: 0;
+	    top: 50%;
+	    width: 20px;
+	    height: 18px;
+	    margin-top: -9px;
+	    text-align: center;
+	    line-height: 1;
+	    font-size: 16px;
+	}
+	.salon-info .contacts p .icon {
+		display: inline-block;
+	}
+	.salon-info .contacts p .icon.icon-location {
+	    background: url(../assets/img/salon_page_sprite.png) no-repeat;
+	    width: 16px;
+	    height: 18px;
+	    background-position: -23px 0px;
+	}
+	.salon-info .contacts p .icon.icon-phone {
+	    background: url('../assets/img/salon_page_sprite.png') no-repeat;
+	    width: 16px;
+	    height: 16px;
+	    background-position: -23px -18px;
+	}
+	.salon-info .contacts p .icon.icon-time {
+	    background: url('../assets/img/salon_page_sprite.png') no-repeat;
+	    width: 16px;
+	    height: 16px;
+	    background-position: -23px -34px;
+	}
+	.btn.btn-filled {
+	    color: #fff;
+	    background-color: #bf2e23;
+	    border-color: #bf2e23;
+	}
+	.btn.btn-big {
+	    padding: 10px 22px;
+	    font-size: 15px;
+	    border-radius: 22px;
+	}
+	.all-services {
+		padding: 25px 10px;
+	}
+	.salon-info-wrap h2 {
+	    font-weight: 500;
+	    font-size: 19px;
+	    margin-bottom: 10px;
+	}
+	#accordion {
+		background: #fff;
+	}
+	.list-service .service {
+	    margin: 0;
+	    padding: 10px 0;
+	    border-bottom: 1px solid #e2e2e2;
+	}
+	.list-service .service .service-left,
+	.list-service .service .service-left {
+		padding-left: 30px;
+
+	}
+	.list-service .service h2 {
+	    font-size: 15px;
+	    font-weight: 700;
+	}
+	.list-service .service h2,
+	.list-service .service .time {
+		margin-bottom: 0;
+	}
+	.list-service .service .time {
+	    color: #808080;
+	}
+	.list-service .service .time,
+	.list-service .service .price {
+	    font-size: 14px;
+	}
+	.btn.btn-primaryy {
+	    color: #bf2e23;
+	    border-color: #bf2e23;
+	}
+	.list-service .service .reservation-btn {
+	    margin-left: 15px;
+	    padding: 5px 15px;
+	    font-size: 13px;
+	}
+	.btn.btn-primaryy:hover {
+	    color: #fff;
+	    background-color: #bf2e23;
+	}
+	#accordion h2 a{
+		display: block;
+	    padding: 15px;
+	    color: #333;
+	    text-decoration: none;
+	    position: relative;
+	   	font-size: 17px;
+		font-weight: 700;
+		cursor: pointer;
+	}
+	#accordion h2 a.collapsed {
+		font-weight: 400;
+	}
+	
+
+
+</style>
+
+
+<script>
+	import {mapGetters} from 'vuex';
+	import {mapActions} from 'vuex';
+
+	export default {
+		data() {
+			return {
+				showList: false,
+				showMasters: false,
+				username: '',
+				phoneNumber: '',
+				showTable: false,
+			}
+		},
+		computed: {
+			...mapGetters('reservations', {
+				itemsReservation: 'itemsReservation',
+				idSalon: 'idSalon',
+			}),
+			...mapGetters('salony', {
+				items: 'items',
+			}),
+			getSalon() {
+				for(var key in this.items) {
+						if(this.idSalon == this.items[key].id) {
+							return this.items[key];
+						}
+				}
+			},
+		},
+
+	}
+</script>
