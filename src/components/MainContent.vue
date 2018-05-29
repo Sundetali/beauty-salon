@@ -33,7 +33,7 @@
 					<template v-for="(item, index) in items">
 						<div class="col-md-6">
 							<div class="item-box d-flex" >
-								<img src="../assets/img/img1.jpg" height="172" width="172" alt="">
+								<img :src="item.img.sample" height="172" width="172" alt="">
 								<div class="items-right d-flex flex-column justify-content-between">
 									<div class="zapis-info">
 										<span>{{item.type}}</span>
@@ -61,24 +61,24 @@
 </template>
 
 <style scoped>
-
 	.content-search {
 		margin: 20px 0 10px;
 	}
 	.content-search .search {
-		height: 40px;
-    	padding: 0 18px;    
+	    width: 50px;
+	    height: 41px;
+	    color: #333333;
+	    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	    cursor: pointer;
+	    background-color: #f5f5f5;
+	    border-radius: 0;
+	    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	}
+	.content-search .search:hover {    
     	background: #EDEDED;
 		border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+		cursor: pointer;
 	}
-	.content-search .search:hover {
-		height: 42px;
-    	padding: 0 18px;    
-    	background: #EDEDED;
-		border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-		margin: 0;
-	}
-
 	.search-input {
 		box-shadow: 0 2px 5px rgba(0, 0, 0 , 0.2)!important;
 		-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0 , 0.2)!important;
@@ -96,6 +96,7 @@
     	font-size: 1.2rem;
     	margin-right: 0;
 	} 
+	
 	.content-answer .banner {
 		transition: box-shadow 0.3s ease-in-out;
 		margin-bottom: 30px;

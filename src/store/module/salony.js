@@ -4,7 +4,9 @@ export default {
 		items: [
 			{
 				id: 1,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img1.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Vse Svoi',
 				address: 'ул.Фурманова, д.248, 2 этаж, 222 каб. офис 441',
@@ -12,7 +14,9 @@ export default {
 			},
 			{
 				id: 2,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img2.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Lilu',
 				address: 'ул. Байтурсынова 90, уг. пр. Абая',
@@ -20,7 +24,9 @@ export default {
 			},
 			{
 				id: 3,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img3.jpg')
+				},
 				type: 'Барбершоп',
 				name: 'Ханская Бритва',
 				address: 'пр. Назарбаева, 77',
@@ -28,7 +34,9 @@ export default {
 			},
 			{
 				id: 4,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img4.jpg')
+				},
 				type: 'Студия красоты',
 				name: 'Nailfie.Kz',
 				address: 'мкр. Самал 2, д. 56а',
@@ -36,7 +44,9 @@ export default {
 			},
 			{
 				id:5,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img5.jpg')
+				},
 				type: 'Студия красоты',
 				name: 'Beauty Bar by Adel Ardashirova',
 				address: 'Розыбакиева 247, ЖК Вавилон, корпус 2. (вход со стороны Розыбакиева)',
@@ -44,7 +54,9 @@ export default {
 			},
 			{
 				id: 6,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img6.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Шик by nail bar Almaty',
 				address: 'ул. Курмангазы, 113, между ул. Байтурсынова ул.Шарипова',
@@ -52,7 +64,9 @@ export default {
 			},
 			{
 				id: 7,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img7.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Zoloto',
 				address: 'ул. Богенбай батыра,106',
@@ -60,7 +74,9 @@ export default {
 			},
 			{
 				id: 8,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img9.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Kuze',
 				address: 'ул. Тынышбаева д. 3',
@@ -68,7 +84,9 @@ export default {
 			},
 			{
 				id: 9,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img10.jpg')
+				},
 				type: 'Салон красоты для детей',
 				name: 'СтильНяшки ТРЦ «Спутник»',
 				address: 'ТРЦ «Спутник», 3 этаж',
@@ -76,7 +94,9 @@ export default {
 			},
 			{
 				id: 10,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img10.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Adina',
 				address: 'мкр. Мамыр1, здание 29/4',
@@ -84,7 +104,9 @@ export default {
 			},
 			{
 				id: 11,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img11.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Beauty Territory',
 				address: 'ул. Розыбакиева, 247 ТРЦ Мега',
@@ -92,7 +114,9 @@ export default {
 			},
 			{
 				id: 12,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img12.jpg')
+				},
 				type: 'Салон красоты',
 				name: ' Принцесс By Nail Bar Almaty',
 				address: 'ул. Жамбыла 105/81',
@@ -100,7 +124,9 @@ export default {
 			},
 			{
 				id: 13,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img13.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'АнАри',
 				address: 'пр. Бухар Жырау, 6',
@@ -108,7 +134,9 @@ export default {
 			},
 			{
 				id: 14,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img14.jpg')
+				},
 				type: 'Студия красоты',
 				name: 'Beauty Lab  Shakhizat Alpisheva',
 				address: 'ул. Сатпаева 30а/3',
@@ -116,7 +144,9 @@ export default {
 			},
 			{
 				id: 15,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img15.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Heaven',
 				address: 'г. Алматы, ул Сатпаева,3 /Валиханова 170',
@@ -124,7 +154,9 @@ export default {
 			},
 			{
 				id: 16,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img16.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Apple room',
 				address: 'ул. Жарокова, 169',
@@ -132,7 +164,9 @@ export default {
 			},
 			{
 				id: 17,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img17.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Шикарный',
 				address: 'пр. Абылай хана, 64',
@@ -140,7 +174,9 @@ export default {
 			},
 			{
 				id: 18,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img18.jpg')
+				},
 				type: 'Студия красоты',
 				name: 'Aiya_eyebrows ',
 				address: 'ул. Розыбакиева, 247',
@@ -148,7 +184,9 @@ export default {
 			},
 			{
 				id: 19,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img19.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'NG',
 				address: 'БЦ Жел Тау, ул. Егизбаева, 7в',
@@ -156,7 +194,9 @@ export default {
 			},
 			{
 				id: 20,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img20.jpg')
+				},
 				type: 'Студия красоты',
 				name: 'My Way Tattoo ',
 				address: 'ул. Назарбаева, 118',
@@ -164,7 +204,9 @@ export default {
 			},
 			{
 				id: 21,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img21.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Әдемі',
 				address: 'пр. Абая 204',
@@ -172,7 +214,9 @@ export default {
 			},
 			{
 				id: 22,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img22.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Красотка ',
 				address: 'ул. Жарокова, 209',
@@ -180,7 +224,9 @@ export default {
 			},
 			{
 				id: 23,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img23.jpg')
+				},
 				type: 'Студия красоты',
 				name: 'ЗинАн',
 				address: 'ул. Демьяна Бедного №3 / ул. Джангильдина угол ул. Рыскулова',
@@ -188,7 +234,9 @@ export default {
 			},
 			{
 				id: 24,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img24.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Divine',
 				address: 'Пр.Абая 20/1',
@@ -196,7 +244,9 @@ export default {
 			},
 			{
 				id: 25,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img25.jpg')
+				},
 				type: 'Студия красоты',
 				name: 'KRASNOE YABLOKO от Саши Харитоновой ',
 				address: 'ул. Гоголя, 74',
@@ -204,7 +254,9 @@ export default {
 			},
 			{
 				id: 26,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img26.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Mi lash',
 				address: ' ул. Казыбек би 125, уг. ул. Досмухамедова',
@@ -212,7 +264,9 @@ export default {
 			},
 			{
 				id: 27,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img27.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Zhazira',
 				address: 'ул. Валиханова, 84',
@@ -220,7 +274,9 @@ export default {
 			},
 			{
 				id: 28,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img28.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Concept Centre For You',
 				address: 'Ул. Ауэзова, 163',
@@ -228,7 +284,9 @@ export default {
 			},
 			{
 				id: 29,
-				img: 'img',
+				img: {
+					sample: require('../../assets/img/img29.jpg')
+				},
 				type: 'Салон красоты',
 				name: 'Lilu  2',
 				address: 'ул. Толе би 192, уг. пр. Гагарина',
