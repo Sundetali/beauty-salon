@@ -4,8 +4,8 @@
 			<div class="container">
 				<div class="row">
 					<ul class="breadcrumb">
-						<li><a href="#">Все салоны</a></li>
-						<li><a href="#">{{getSalon.type}} {{getSalon.name}}</a></li>
+						<li><router-link to="/main">Все салоны</router-link></li>
+						<li><router-link :to="'/salon/'+getSalon.name+'-'+getSalon.id">{{getSalon.type}} {{getSalon.name}}</router-link></li>
 						<li>Онлайн запись</li>
 					</ul>
 					<h1 class="mb-10 w-100">{{getSalon.type}} {{getSalon.name}}</h1>
@@ -19,7 +19,12 @@
 						<div class="wrapper-res-list w-100">
 							<form>
 							  <div class="form-group">
-							    <label for="example" class="choice">Выбирите услугу</label>
+							    <label for="example" class="choice">
+							    <span>
+							    	<i class="fillabilityStatus fa fa-fw" :class="checkServiceClass"></i>
+							    </span>
+							    Выбирите услугу
+								</label>
 								<div class="selected-services d-flex justify-content-between align-items-center" 
 									v-for="(elem, index) in selectedServices">
 									<span class="left">
@@ -64,7 +69,10 @@
 							<div class="wrapper-masters mt-4 w-100">
 								<form @submit.prevent>
 								  <div class="form-group">
-								    <label for="master" class="choice">Выбирите мастера</label>
+								    <label for="master" class="choice">
+								    <span>
+							    		<i class="fillabilityStatus fa fa-fw" :class="checkMasterClass"></i>
+							    	</span>Выбирите мастера</label>
 								    <div class="selected-services"
 								    	v-show="selectedMaster != ''">
 										<span class="left">
@@ -106,13 +114,19 @@
 								<form @submit.prevent>
 									<div class="wrapper-group d-flex">
 										<div class="col-md-6 pl-0">
-											    <label class="field" for="nameField">Ваше имя</label>
+											    <label class="field" for="nameField"><span>
+										    		<i class="fillabilityStatus fa fa-fw"  :class="checkUserClass"></i>
+										    	</span>Ваше имя</label>
 											    <input type="text" class="form-control" id="nameField" placeholder="Введите ваше имя"
 											    		v-model="username">
 										</div>
 							
 									  	<div class="col-md-6 pr-0">
-											    <label class="field" for="phoneField">Мобильный телефон</label>
+											    <label class="field" for="phoneField">
+											    	<span>
+										    			<i class="fillabilityStatus fa fa-fw" :class="checkPhoneClass"></i>
+										    		</span>Мобильный телефон
+										    	</label>
 											    <input type="text" class="form-control" id="phoneField" placeholder="Введите телефон"
 											    		v-model="phoneNumber">
 										</div>	
@@ -216,6 +230,17 @@
 	}
 	.form-group {
 		margin-bottom: 0;
+	}
+	.fa-exclamation {
+	    color: #feb73b;
+	}
+	.fa-check {
+    	color: #47a025;
+	}
+	.reservation-page .fillabilityStatus {
+	    font-size: 18px;
+	    position: absolute;
+	    margin-left: -25px;
 	}
 	.form-group label,
 	.contact-data {
@@ -426,6 +451,21 @@
 				}
 				return true;
 			},
+			checkServiceClass() {
+				return this.selectedServices.length > 0 ? 'fa-check' : 'fa-exclamation';
+			},
+			checkMasterClass() {
+				return this.selectedMaster != '' ? 'fa-check' : 'fa-exclamation';
+			},
+			checkUserClass() {
+				console.log(this.username + " " + this.username.length);
+				return this.username != '' ? 'fa-check' : 'fa-exclamation';
+			},
+			checkPhoneClass() {
+				return this.phoneNumber != '' ? 'fa-check' : 'fa-exclamation';
+			},
+			
+
 		},
 		methods: {
 			getType(data, parentname) {
@@ -449,8 +489,6 @@
 			},
 
 			getTable() {
-				this.$store.dispatch('reservations/clearServices');
-				this.$store.dispatch('reservations/clearMaster');
 				return this.showTable = !this.showTable;
 			}
 		}

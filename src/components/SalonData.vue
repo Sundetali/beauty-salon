@@ -6,8 +6,8 @@
 					<div class="col-md-8">
 						<div class="header-box w-100">
 							<ul class="breadcrumb">
-								<li><a href="#">Все салоны</a></li>
-								<li><a href="#">{{getSalon.type}} {{getSalon.name}}</a></li>
+								<li><router-link to="/main">Все салоны</router-link></li>
+								<li><span>{{getSalon.type}} {{getSalon.name}}</span></li>
 							</ul>
 							<div class="heading-group">
 								<p class="salon mt-2 mb-1">{{getSalon.type}}</p>
@@ -85,7 +85,8 @@
 												<span v-on:click="getType(item, elem.name)">
 												<router-link :to="'/salon/'+idSalon+'/reservations'" 
 												class="btn btn-primaryy reservation-btn">
-												ЗАПИСАТЬСЯ</router-link></span>	
+												ЗАПИСАТЬСЯ</router-link>
+												</span>	
 											
 											</div>
 										</section>
@@ -130,6 +131,9 @@
 	    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
 	    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
 	    padding: 20px 0 15px;
+	}
+	.salon-info a:hover {
+		text-decoration: underline;
 	}
 	.salon-info .heading-group {
 	    margin-bottom: 25px;
