@@ -10,7 +10,7 @@ export default {
 					{
 						name: "Лаконы",
 						minute: 60,
-						price: "4000 T",
+						price: "4000-9000 T",
 						masters: {
 							master1: "Anna",
 							master2: "Nastya",
@@ -20,7 +20,7 @@ export default {
 					{
 						name: "bla bla",
 						minute: 60,
-						price: "4000 T",
+						price: "3000 - 8000T",
 						masters: {
 							master2: "Nastya",
 							master3: "Natasha",
@@ -29,9 +29,25 @@ export default {
 					{
 						name: "Лаконы",
 						minute: 60,
-						price: "4000 T",
+						price: "10000 T",
 						masters: {
 							master1: "Anna",
+							master3: "Natasha",
+						},
+					},
+					{
+						name: "Кератиновое выпрямление волос",
+						minute: 60,
+						price: "6000 - 7000 T",
+						masters: {
+							master3: "Natasha",
+						},
+					},
+					{
+						name: "Кератиновое выпрямление волос",
+						minute: 60,
+						price: "4000 T",
+						masters: {
 							master3: "Natasha",
 						},
 					},
@@ -75,6 +91,14 @@ export default {
 						masters: {
 							master1: "Natalya",
 							master3: "Tanya"
+						},
+					},
+					{
+						name: "Кератиновое выпрямление волос",
+						minute: 60,
+						price: "4000 T",
+						masters: {
+							master3: "Tanya",
 						},
 					},
 					{
@@ -140,6 +164,8 @@ export default {
 						price: "4000 T",
 						masters: {
 							master1: "Maria",
+							master2: "Natasha",
+							master3: "Anna",
 						},
 					},
 					{
@@ -167,7 +193,6 @@ export default {
 						masters: {
 							master1: "Maria",
 							master2: "Natasha",
-							master3: "Anna",
 						},
 					},
 				],
@@ -226,6 +251,8 @@ export default {
 						minute: 60,
 						price: "4000 T",
 						masters: {
+							master1: "Alikhan",
+							master2: "Nurs",
 							master3: "Yelnar",
 						},
 					},
@@ -235,7 +262,6 @@ export default {
 						price: "4000 T",
 						masters: {
 							master1: "Alikhan",
-							master2: "Nurs",
 							master3: "Yelnar",
 						},
 					},

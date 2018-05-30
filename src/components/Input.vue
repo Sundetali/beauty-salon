@@ -12,7 +12,7 @@
     </div>
 </template>
 
-<style scoper>	
+<style scoped>	
 	label {
 		font-weight: bold;
 	}

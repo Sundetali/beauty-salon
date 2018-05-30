@@ -10,7 +10,7 @@
 								<li><a href="#">{{getSalon.type}} {{getSalon.name}}</a></li>
 							</ul>
 							<div class="heading-group">
-								<p class="salon mt-2">{{getSalon.type}}</p>
+								<p class="salon mt-2 mb-1">{{getSalon.type}}</p>
 								<h1 class="name">{{getSalon.name}}</h1>
 							</div>
 						</div>
@@ -29,8 +29,6 @@
 										</span>
 											<span>+7 (777) 139-05-55</span><br />
 											<span>+7 (700) 978-94-95</span><br />
-											<span>+7 (701) 765-73-74</span><br />
-											<span>+7 (707) 773-57-25</span><br />
 									</p>
 									<p>
 										<span class="ico-wrap">
@@ -38,9 +36,8 @@
 										</span>08:00 - 22:00
 									</p>	
 								</div>
-								<router-link :to="'/salon/'+'item.id'+'/reservations'">
-									<input type="button" class="btn btn-filled btn-big" value="ЗАПИСАТЬСЯ"
-											v-on:click="selectData(item.id)">	
+								<router-link :to="'/salon/'+idSalon+'/reservations'">
+									<input type="button" class="btn btn-filled btn-big" value="ЗАПИСАТЬСЯ">	
 								</router-link>			
 								
 						</section>
@@ -50,33 +47,46 @@
 			</div>
 		</div>
 		<div class="container">
-			<div class="row">
+			<div class="row align-items-top mt-5">
 				<div class="col-md-8">
 					<div class="all-services">
+						<h2>О САЛОНЕ</h2>
+						<p>
+							<em>Добро пожаловать в салон красоты {{getSalon.name}}!</em>
+						</p>
 						<h2>УСЛУГИ</h2>
-						<div id="accordion" 
-							:v-for="(item, index) in items" 
-							:key="index"
-							>
-							<section class="services-category box">
-							    <div id="headingOne">
+						<div id="accordion">
+							<section class="services-category box"
+							v-for="(elem, index) in itemsReservation"
+							:key="index">
+							    <div :id="'heading'+index">
 								    <h2 class="mb-0">
-								        <a data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								     
+								        <a data-toggle="collapse" :data-target="'#'+getElem(elem.name)" aria-expanded="true" :aria-controls="getElem(elem.name)"
+								        v-on:click="top = !top">
+								     		{{elem.name}} ({{elem.types.length}})
 								        </a>
 							     	</h2>
+							     	<span>
+							     		<i class="icon icon-chevron" :class="changeIcon"></i>
+							     	</span>
 							    </div>
-							    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-							    	<div class="list-service">
+							    <div :id="getElem(elem.name)" class="collapse show" :aria-labelledby="'heading'+index" data-parent="#accordion">
+							    	<div class="list-service"
+							    	v-for="(item, index) in elem.types"
+							    	:key="index">
 										<section class="service d-flex justify-content-between">
 											<div class="w-50 service-left">
-												<h2>Boost Up - объем для волос</h2>
-												<p class="time">90 минут</p>
+												<h2>{{item.name}}</h2>
+												<p class="time">{{item.minute}} минут</p>
 											</div>
 											<div class="w-50 service-right text-right pr-5">
-													<span class="price">6000 ₸ - 10000 ₸
-													</span>
-												<a href="/salon/85/reservations?serviceIds=19810" class="btn btn-primaryy reservation-btn">ЗАПИСАТЬСЯ</a>
+												<span class="price">{{item.price}}
+												</span>
+												<span v-on:click="getType(item, elem.name)">
+												<router-link :to="'/salon/'+idSalon+'/reservations'" 
+												class="btn btn-primaryy reservation-btn">
+												ЗАПИСАТЬСЯ</router-link></span>	
+											
 											</div>
 										</section>
 							      	</div>
@@ -85,13 +95,35 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<div class="img-wrapper">
+						<img src="../assets/img/salon.jpg" alt="salon">
+					</div>
+					<div class="info-slider">
+						<h2 class="info-header">Мастера</h2>
+						<div class="master-list p-3"
+						
+						>
+						<div v-for="(salon,index) in itemsReservation">
+							<h3>{{salon.name}}</h3>
+							<p v-for="(master,index) in salon.types[0].masters"
+							:key="index">
+								{{master}}
+							</p>
+						</div>
+							
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <style scoped>
+	a {
+		text-decoration: none;
+	}
 	.salon-info {
 	    background-color: #fff;
 	    box-shadow: 0 1px 2px rgba(0,0,0,.2);
@@ -183,12 +215,15 @@
 	    border-radius: 22px;
 	}
 	.all-services {
-		padding: 25px 10px;
+		padding: 0 10px 25px;
 	}
 	.salon-info-wrap h2 {
-	    font-weight: 500;
-	    font-size: 19px;
+	    font-weight: 550;
+	    font-size: 18px;
 	    margin-bottom: 10px;
+	}
+	.salon-info-wrap p {
+		font-size: 15px;
 	}
 	#accordion {
 		background: #fff;
@@ -206,6 +241,25 @@
 	.list-service .service h2 {
 	    font-size: 15px;
 	    font-weight: 700;
+	}
+	.services-category {
+		position: relative;
+	}
+	.services-category span .icon.icon-chevron {
+	    background: url(../assets/img/salon_page_sprite.png) no-repeat;
+	    width: 23px;
+	    height: 13px;
+	}
+	.services-category span .icon {
+	    position: absolute;
+	    top: 19px;
+	    right: 18px;
+	}
+	.top {
+		background-position: 0 0;
+	}
+	.down {
+		background-position: 0 -13px!important;
 	}
 	.list-service .service h2,
 	.list-service .service .time {
@@ -244,9 +298,31 @@
 	#accordion h2 a.collapsed {
 		font-weight: 400;
 	}
-	
-
-
+	.info-slider {
+	    border: 1px solid #e2e2e2;
+	    display: block;
+	    background-color: #fff;
+	    border-radius: 2px;
+	    color: #333;
+	    position: relative;
+	    box-shadow: 0 0 4px rgba(0, 0, 0, 0.07);
+	    margin-bottom: 20px;
+	}
+	.info-slider .info-header {
+	    font-weight: 900;
+	    font-size: 17px;
+	    padding: 9px 12px;
+	    border-bottom: 1px solid #e2e2e2;
+	    margin: 0;
+	}
+	.info-slider .master-list {
+	    max-height: 636px;
+	    overflow: auto;
+	}
+	.info-slider .master-list div {
+		border-bottom: 1px solid #e2e2e2;
+		margin-bottom: 10px;
+	}
 </style>
 
 
@@ -257,11 +333,7 @@
 	export default {
 		data() {
 			return {
-				showList: false,
-				showMasters: false,
-				username: '',
-				phoneNumber: '',
-				showTable: false,
+				top: true,
 			}
 		},
 		computed: {
@@ -279,7 +351,34 @@
 						}
 				}
 			},
+			changeIcon() {
+				if(this.top) {
+					return 'top';
+				}
+				else {
+					return 'down';
+				}
+			}	
 		},
+		methods: {
+			getElem(name) {
+				return name.split(' ').join(''); 
+			},
+			chosenData(data) {
+				console.log(data);
+				return data;
+			},
+			getType(data, parentname) {
+				console.log(data, parentname);
+				return this.$store.dispatch('reservations/addType',
+					{
+						type: data,
+						parentname: parentname,
+					} 
+				);
+			},
+
+		}
 
 	}
 </script>

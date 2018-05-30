@@ -80,6 +80,7 @@
 	    font-size: 12px;
 	    line-height: 1.2;
 	    background-color: #fff;
+	    color: #444;
 	}
 	* {
 		padding: 0;
