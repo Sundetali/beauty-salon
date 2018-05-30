@@ -40,7 +40,7 @@
 								</div>
 							    <div class="autocomplete mt-2" 
 							    	v-on:click="showList = !showList">
-							    	<input type="text" class="form-control" id="example" placeholder="ДОБАВИТЬ УСЛУГУ">
+							    	<input type="text" class="form-control" id="example" placeholder="ДОБАВИТЬ УСЛУГУ" autocomplete="off">
 							    	<i class="fa fa-chevron-down" aria-hidden="true"></i>	
 							    </div> 
 							  </div>
@@ -74,16 +74,16 @@
 							    		<i class="fillabilityStatus fa fa-fw" :class="checkMasterClass"></i>
 							    	</span>Выбирите мастера</label>
 								    <div class="selected-services"
-								    	v-show="selectedMaster != ''">
+								    	v-show="getSelectedMaster != ''">
 										<span class="left">
-											<span class="name">{{selectedMaster}}</span>	
+											<span class="name">{{getSelectedMaster}}</span>	
 										</span>
 										<i class="fas fa-times master-icon"
 											v-on:click="getMasterDel()"></i>
 									</div>
 								    <div class="autocomplete" 
 								    	v-on:click="showMasters = !showMasters">
-								    	<input type="text" class="form-control" id="master" placeholder="ДОБАВИТЬ МАСТЕРА">
+								    	<input type="text" class="form-control" id="master" placeholder="ДОБАВИТЬ МАСТЕРА" autocomplete="off">
 								    	<i class="fa fa-chevron-down" aria-hidden="true"></i>	
 								    </div> 
 								  </div>
@@ -118,7 +118,7 @@
 										    		<i class="fillabilityStatus fa fa-fw"  :class="checkUserClass"></i>
 										    	</span>Ваше имя</label>
 											    <input type="text" class="form-control" id="nameField" placeholder="Введите ваше имя"
-											    		v-model="username">
+											    		v-model="username" autocomplete="off">
 										</div>
 							
 									  	<div class="col-md-6 pr-0">
@@ -128,7 +128,7 @@
 										    		</span>Мобильный телефон
 										    	</label>
 											    <input type="text" class="form-control" id="phoneField" placeholder="Введите телефон"
-											    		v-model="phoneNumber">
+											    		v-model="phoneNumber" autocomplete="off">
 										</div>	
 									</div>
 									<input type="button" class="btn btn-big btn-primaryy btn-control mx-auto mt-3" value="ЗАПИСАТЬСЯ"
@@ -443,6 +443,9 @@
 	  				}
   				}
 				return newMasters;
+			},
+			getSelectedMaster() {
+				return this.getMasters.indexOf(this.selectedMaster) != -1 ? this.selectedMaster : '';
 			},
 			info() {
 				if(this.selectedServices.length > 0 && this.selectedMaster != ''
