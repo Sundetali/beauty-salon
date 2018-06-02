@@ -3,13 +3,12 @@
         <label>{{ name }} {{symbol}}</label>
         <span class="fa" :class="validClass" v-if="activated">
         </span>
-        <input type="text" 
+        <input :type="type" 
         	   class="form-control"
 			   :value="value"
 			   :placeholder="placeholder"
 			   @input="onInput"
 			   autocomplete="off">
-
     </div>
 </template>
 
@@ -29,12 +28,15 @@
 	input.form-control:focus {
 	    border-color: #bf2e23;  
 	}
+	.fa, label {
+		font-size: 14px;
+	}
 
 </style>
 
 <script>
 	export default {
-		props: ['name', 'value', 'pattern', 'symbol', 'placeholder'],
+		props: ['name', 'value', 'pattern', 'symbol', 'placeholder', 'type'],
 		data(){
 			return {
 				activated: this.value != ''
@@ -46,18 +48,19 @@
 		computed: {
 			isValid(){
 				return this.pattern.test(this.value);
+
 			},
 			validClass(){
 				return this.isValid ? 
 						'fa-check-circle text-success' :
 						'fa-exclamation-circle text-danger';
-			}
+			},
 		},
 		methods: {
 			onInput(e){
 				this.activated = true;
 				this.$emit('update:value', e.target.value);
-			}
+			},
 		},
 		watch: {
 			isValid(){

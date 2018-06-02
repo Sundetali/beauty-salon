@@ -22,7 +22,10 @@ const routes = [
 	{
 		name: 'main',
 		path: '/main',
-		component: MainContent
+		component: MainContent,
+		/*beforeEnter(to, from, next) {
+
+		},*/
 	},
 	{
 		name: 'contacts',

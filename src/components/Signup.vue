@@ -1,40 +1,12 @@
 <template>
 	<div class="row justify-content-md-center wrapper-content">
-		<div class="col-md-5">
+		<div class="col-md-6">
 			<h2 class="text-center">Создание учетной записи</h2>
-			<!-- <form @submit.prevent>
-			 	  <div class="form-group">
-			 	    <label for="phone">Телефон *</label>
-			 	    <input type="phoe" class="form-control" id="phone" placeholder="Номер телефона">
-			 	  </div>
-			 	  <div class="form-group">
-			 	    <label for="password">Пароль *</label>
-			 	    <input type="password" class="form-control" id="password" placeholder="Придумайте пароль">
-			 	  </div>
-			 	  <div class="form-group">
-			 	    <label for="repeat-password">Повторите пароль *</label>
-			 	    <input type="password" class="form-control" id="repeat-password" placeholder="Напишите пароль еще раз">
-			 	  </div>
-			 	  <div class="form-group">
-			 	    <label for="name">Имя *</label>
-			 	    <input type="text" class="form-control" id="name" placeholder="Введите имя">
-			 	  </div>
-			 	  <div class="form-group">
-			 	    <label for="surname">Фамилия</label>
-			 	    <input type="text" class="form-control" id="surname" placeholder="Введите фамилю">
-			 	  </div>
-			 	  <div class="form-group">
-			 	    <label for="email">E-mail</label>
-			 	    <input type="email" class="form-control" id="email" placeholder="Введите свой почтовый ящик">
-			 	  </div>
-			 	  <div class="form-group text-right">
-			 		  <input type="button" value="РЕГИСТРАЦИЯ" class="btn btn-green">
-			 	  </div>
-			 </form> --> 
 			<template  v-if="!formSubmited">
 				<form @submit.prevent="formSubmited = true">
 				  	<div class="form-group">
 						<app-input v-for="(item, index) in  info"
+								   :type="item.type"
 								   :name="item.name"
 								   :value.sync="item.value"
 								   :pattern="item.pattern"
@@ -62,6 +34,9 @@
 						</tr>
 					</tbody>
 				</table>
+				<router-link :to="{name: 'main'}" class="back">
+							<input type="button" class="btn btn-big btn-primary btn-control mx-auto mt-3" value="Главная страница" v-on:click="showTable = false">
+				</router-link>
 			</div>
 		</div>
 	</div>
@@ -116,43 +91,50 @@
 				info: [
 					{
 						name: 'Телефон',
+						type: 'text',
 						value: '',
 						symbol: '*',
 						placeholder: "Номер телефона",
-						pattern: /^[0-9]{7,14}$/,
+						pattern: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/,
+						error: 'error!',
 					},
 					{
 						name: 'Пароль',
+						type: 'text',
 						value: '',
 						symbol: '*',
 						placeholder: "Придумайте пароль",
-						pattern: /^[0-9]{7,14}$/,
+						pattern: /^[a-zA-Z0-9]+$/,
 					},
 					{
 						name: 'Повторите пароль',
+						type: 'text',
 						value: '',
 						symbol: '*',
 						placeholder: "Напишите пароль еще раз",
-						pattern: /^[0-9]{7,14}$/,
+						pattern: /^[a-zA-Z0-9]{5,18}$/,
 					},				
 					{
 						name: 'Имя',
+						type: 'text',
 						value: '',
 						symbol: '*',
 						placeholder: "Введите имя",
-						pattern: /^[a-zA-Z ]{3,30}$/
+						pattern: /^[a-zA-Z]{3,30}$/
 					},				
 					{
 						name: 'Фамилия',
+						type: 'text',
 						value: '',
 						symbol: '',
 						placeholder: "Введите фамилию",
-						pattern: /^[a-zA-Z ]{3,30}$/
+						pattern: /^[a-zA-Z]{3,30}$/
 					},
 					{
 						name: 'Email',
+						type: 'email',
 						value: '',
-						pattern: /.+/,
+						pattern: /[0-9a-zа-я_A-ZА-Я]+@[0-9a-zа-я_A-ZА-Я^.]+\.[a-zа-яА-ЯA-Z]{2,4}/,
 						placeholder: "Введите свой почтовый ящик",
 						symbol: '',
 					},
@@ -180,7 +162,6 @@
 				}
 
 				this.done = done;
-				//this.done += status ? 1 : -1;
 			}
 		},
 		components: {

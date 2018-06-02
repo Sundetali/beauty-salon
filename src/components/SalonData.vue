@@ -48,7 +48,7 @@
 		</div>
 		<div class="container">
 			<div class="row align-items-top mt-5">
-				<div class="col-md-8">
+				<div class="col-md-8">	
 					<div class="all-services">
 						<h2>О САЛОНЕ</h2>
 						<p>
@@ -62,13 +62,13 @@
 							    <div :id="'heading'+index">
 								    <h2 class="mb-0">
 								        <a data-toggle="collapse" :data-target="'#'+getElem(elem.name)" aria-expanded="true" :aria-controls="getElem(elem.name)"
-								        v-on:click="top = !top">
+								        v-on:click="$set(controls, index, !controls[index])">
 								     		{{elem.name}} ({{elem.types.length}})
+									     	<span>
+									     		<i class="icon icon-chevron" :class="controls[index] ? 'top' : 'down'"></i>
+									     	</span>
 								        </a>
 							     	</h2>
-							     	<span>
-							     		<i class="icon icon-chevron" :class="changeIcon"></i>
-							     	</span>
 							    </div>
 							    <div :id="getElem(elem.name)" class="collapse show" :aria-labelledby="'heading'+index" data-parent="#accordion">
 							    	<div class="list-service"
@@ -97,7 +97,7 @@
 					</div>
 				</div>
 				<div class="col-md-4">
-					<div class="img-wrapper">
+					<div class="img-wrapper mb-2">
 						<img src="../assets/img/salon.jpg" alt="salon">
 					</div>
 					<div class="info-slider">
@@ -338,49 +338,49 @@
 		data() {
 			return {
 				top: true,
+				controls: [],
+				index: null,
+			}
+		},
+		created() {
+			for(var i=0; i < this.itemsReservation.length; i++) {
+				this.$set(this.controls, i, false);
 			}
 		},
 		computed: {
 			...mapGetters('reservations', {
 				itemsReservation: 'itemsReservation',
-				idSalon: 'idSalon',
 			}),
 			...mapGetters('salony', {
 				items: 'items',
 			}),
+			idSalon() {
+				var id = this.$route.params.nameId.split('-');			
+				return id[1];
+			},
 			getSalon() {
 				for(var key in this.items) {
 						if(this.idSalon == this.items[key].id) {
 							return this.items[key];
 						}
 				}
-			},
-			changeIcon() {
-				if(this.top) {
-					return 'top';
-				}
-				else {
-					return 'down';
-				}
-			}	
+			}
 		},
 		methods: {
 			getElem(name) {
 				return name.split(' ').join(''); 
 			},
 			chosenData(data) {
-				console.log(data);
 				return data;
 			},
 			getType(data, parentname) {
-				console.log(data, parentname);
 				return this.$store.dispatch('reservations/addType',
 					{
 						type: data,
 						parentname: parentname,
 					} 
 				);
-			},
+			}
 
 		}
 

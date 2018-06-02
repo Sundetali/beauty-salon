@@ -18,8 +18,8 @@ export default {
 						},
 					},
 					{
-						name: "bla bla",
-						minute: 60,
+						name: "Кератиновое выпрямление волос",
+						minute: 80,
 						price: "3000 - 8000T",
 						masters: {
 							master2: "Nastya",
@@ -27,7 +27,7 @@ export default {
 						},
 					},
 					{
-						name: "Лаконы",
+						name: "Лаконы 2",
 						minute: 60,
 						price: "10000 T",
 						masters: {
@@ -36,25 +36,25 @@ export default {
 						},
 					},
 					{
-						name: "Кератиновое выпрямление волос",
-						minute: 60,
+						name: "Мытье головы",
+						minute: 75,
 						price: "6000 - 7000 T",
 						masters: {
 							master3: "Natasha",
 						},
 					},
 					{
-						name: "Кератиновое выпрямление волос",
-						minute: 60,
-						price: "4000 T",
+						name: "Кератиновое выпрямление волос 2",
+						minute: 30,
+						price: "6000 T",
 						masters: {
 							master3: "Natasha",
 						},
 					},
 					{
-						name: "Кератиновое выпрямление волос",
-						minute: 60,
-						price: "4000 T",
+						name: "Укладка",
+						minute: 90,
+						price: "6000 T",
 						masters: {
 							master3: "Natasha",
 						},
@@ -66,8 +66,8 @@ export default {
 				types: 
 				[
 					{
-						name: "Лаконы",
-						minute: 60,
+						name: "Аквариумное наращивание ногтей",
+						minute: 45,
 						price: "4000 T",
 						masters: {
 							master1: "Natalya",
@@ -76,35 +76,35 @@ export default {
 						},
 					},
 					{
-						name: "Лаконы",
-						minute: 60,
-						price: "4000 T",
+						name: "Акриловое наращивание ногтей под лак",
+						minute: 70,
+						price: "2000 T",
 						masters: {
 							master1: "Natalya",
 							master2: "Larisa",
 						},
 					},
 					{
-						name: "Лаконы",
-						minute: 60,
-						price: "4000 T",
+						name: "Акриловое наращивание с гелевым покрытием",
+						minute: 120,
+						price: "2500 T",
 						masters: {
 							master1: "Natalya",
 							master3: "Tanya"
 						},
 					},
 					{
-						name: "Кератиновое выпрямление волос",
+						name: "Дизайн ногтей",
 						minute: 60,
-						price: "4000 T",
+						price: "100 T",
 						masters: {
 							master3: "Tanya",
 						},
 					},
 					{
-						name: "Кератиновое выпрямление волос",
-						minute: 60,
-						price: "4000 T",
+						name: "Коррекция нарощеных ногтей 'Аквариум'",
+						minute: 80,
+						price: "4000 T - 10000 T",
 						masters: {
 							master3: "Tanya",
 						},
@@ -116,40 +116,13 @@ export default {
 				types: 
 				[
 					{
-						name: "Лаконы",
+						name: "Массаж лица",
 						minute: 60,
-						price: "4000 T",
+						price: "6000 T - 12000 T",
 						masters: {
 							master1: "Zarina",
 							master2: "Kamilla",
 							master3: "Gaukhar",
-						},
-					},
-					{
-						name: "Лаконы",
-						minute: 60,
-						price: "4000 T",
-						masters: {
-							master1: "Zarina",
-							master2: "Kamilla",
-						},
-					},
-					{
-						name: "Лаконы",
-						minute: 60,
-						price: "4000 T",
-						masters: {
-							master2: "Kamilla",
-							master3: "Gaukhar",
-						},
-					},
-					{
-						name: "Кератиновое выпрямление волос",
-						minute: 60,
-						price: "4000 T",
-						masters: {
-							master1: "Zarina",
-							master2: "Kamilla",
 						},
 					},
 				],
@@ -159,9 +132,9 @@ export default {
 				types: 
 				[
 					{
-						name: "Лаконы",
+						name: "Коррекция бровей",
 						minute: 60,
-						price: "4000 T",
+						price: "1500 T",
 						masters: {
 							master1: "Maria",
 							master2: "Natasha",
@@ -169,26 +142,26 @@ export default {
 						},
 					},
 					{
-						name: "Лаконы",
+						name: "Ламинирование ресниц",
 						minute: 60,
-						price: "4000 T",
+						price: "7000 T",
 						masters: {
 							master1: "Maria",
 							master2: "Natasha",
 						},
 					},
 					{
-						name: "Лаконы",
-						minute: 60,
-						price: "4000 T",
+						name: "Микроблейдинг бровей",
+						minute: 120,
+						price: "15000 T",
 						masters: {
 							master2: "Natasha",
 							master3: "Anna",
 						},
 					},
 					{
-						name: "Кератиновое выпрямление волос",
-						minute: 60,
+						name: "Микроблейдинг бровей. Коррекция",
+						minute: 120,
 						price: "4000 T",
 						masters: {
 							master1: "Maria",
@@ -289,7 +262,6 @@ export default {
 		],
 		selectedServices: [],
 		selectedMaster: '',
-		idSalon: '',
 	},
 	getters: {
 		itemsReservation(state) {
@@ -301,9 +273,6 @@ export default {
 		selectedMaster(state) {
 			return state.selectedMaster;
 		},
-		idSalon(state) {
-			return state.idSalon;
-		}
 	},
 	mutations: {
 		addType(state, data) {
@@ -318,15 +287,13 @@ export default {
 		deleteMaster(state) {
 			return state.selectedMaster = '';
 		},
-		addData(state, id) {
-			return state.idSalon = id;
-		},
-		clearServices(state) {
-			return state.selectedServices = [];
+		clearSelectedServices(state) {
+			return state.selectedServices.length = 0;
 		},
 		clearMaster(state) {
 			return state.selectedMaster = '';
-		},
+		}
+
 	},
 	actions: {
 		addType(store, data) {
@@ -341,11 +308,8 @@ export default {
 		deleteMaster(store) {
 			return store.commit('deleteMaster');
 		},
-		addData(store, id) {
-			return store.commit('addData', id);
-		},
-		clearServices(store) {
-			return store.commit('clearServices');
+		clearSelectedServices(store) {
+			return store.commit('clearSelectedServices');
 		},
 		clearMaster(store) {
 			return store.commit('clearMaster');

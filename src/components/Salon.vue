@@ -15,7 +15,7 @@
 		<div class="input-wrapper">
 			<div class="container">
 				<div class="row">
-					<template v-if="!showTable">
+					<template v-if="showTable === false">
 						<div class="wrapper-res-list w-100">
 							<form>
 							  <div class="form-group">
@@ -54,7 +54,7 @@
 								 	<li class="list-group-item list-item d-flex justify-content-between	align-items-top"
 								 			v-for="(elem, i) in item.types"
 								 			:key="i"
-								 			v-on:click="getType(elem, item.name)">
+								 			v-on:click="getType(elem, item.name, i)">
 								  		<span class="left">
 									  		<span class="name">{{elem.name}}</span>
 									  		<br>
@@ -127,13 +127,12 @@
 										    			<i class="fillabilityStatus fa fa-fw" :class="checkPhoneClass"></i>
 										    		</span>Мобильный телефон
 										    	</label>
-											    <input type="text" class="form-control" id="phoneField" placeholder="Введите телефон"
-											    		v-model="phoneNumber" autocomplete="off">
+											    <input type="text" class="form-control" id="phoneField" placeholder="Введите телефон" v-model="phoneNumber" autocomplete="off">
 										</div>	
 									</div>
 									<input type="button" class="btn btn-big btn-primaryy btn-control mx-auto mt-3" value="ЗАПИСАТЬСЯ"
-									:disabled="info"
-									v-on:click="getTable()">	
+									v-on:click="showTable = true"
+									:disabled="info">	
 								</form>
 							</div>		
 						</template>
@@ -174,6 +173,9 @@
 								</tr>
 							</tbody>
 						</table>
+						<router-link :to="{name: 'main'}" class="back">
+							<input type="button" class="btn btn-big btn-primaryy btn-control mx-auto mt-3" value="Главная страница" v-on:click="showTable = false">
+						</router-link>
 					</div>
 					
 				</div>
@@ -380,6 +382,9 @@
 	    color: #fff;
 	    background-color: #bf2e23;
 	}
+	.back {
+		text-decoration: none;
+	}
 
 </style>
 
@@ -397,12 +402,15 @@
 				showTable: false,
 			}
 		},
+		destroyed() {
+			this.$store.commit('reservations/clearMaster');
+			this.$store.commit('reservations/clearSelectedServices');
+		},
 		computed: {
 			...mapGetters('reservations', {
 				itemsReservation: 'itemsReservation',
 				selectedServices: 'selectedServices',
 				selectedMaster: 'selectedMaster',
-				idSalon: 'idSalon',
 				info: 'info',
 			}),
 			...mapGetters('salony', {
@@ -410,7 +418,7 @@
 			}),
 			getSalon() {
 				for(var key in this.items) {
-						if(this.idSalon == this.items[key].id) {
+						if(this.$route.params.id == this.items[key].id) {
 							return this.items[key];
 						}
 				}
@@ -447,13 +455,6 @@
 			getSelectedMaster() {
 				return this.getMasters.indexOf(this.selectedMaster) != -1 ? this.selectedMaster : '';
 			},
-			info() {
-				if(this.selectedServices.length > 0 && this.selectedMaster != ''
-					&& this.username != '' && this.phoneNumber != ''){
-					return false;
-				}
-				return true;
-			},
 			checkServiceClass() {
 				return this.selectedServices.length > 0 ? 'fa-check' : 'fa-exclamation';
 			},
@@ -461,23 +462,39 @@
 				return this.selectedMaster != '' ? 'fa-check' : 'fa-exclamation';
 			},
 			checkUserClass() {
-				console.log(this.username + " " + this.username.length);
 				return this.username != '' ? 'fa-check' : 'fa-exclamation';
 			},
 			checkPhoneClass() {
-				return this.phoneNumber != '' ? 'fa-check' : 'fa-exclamation';
+				return /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/.test(this.phoneNumber) ? 'fa-check' : 'fa-exclamation';
 			},
-			
+			info() {
+				if(this.checkServiceClass == 'fa-check' && this.checkMasterClass == 'fa-check'
+					&&  this.checkUserClass == 'fa-check' && this.checkPhoneClass == 'fa-check'){
+					return false;
+				}
+				return true;
+			},
 
 		},
 		methods: {
-			getType(data, parentname) {
-				this.$store.dispatch('reservations/addType',
-					{
+			clearSalon() {
+				this.$store.dispatch('reservations/clearMaster');
+				this.$store.dispatch('reservations/clearSelectedServices');
+				
+				this.showTable = false;
+				return this.showTable;
+			},
+			getType(data = null, parentname = null, index) {
+				var ob = {
 						type: data,
 						parentname: parentname,
-					} 
-				);
+						index: index,
+					};
+					for(var i=0; i<this.selectedServices; i++) {
+						console.log(this.selectedServices);
+					}
+					console.log(parentname);
+				this.$store.dispatch('reservations/addType',ob);
 				this.showList = false;
 			},
 			getService(index) {
@@ -490,10 +507,6 @@
 			getMasterDel() {
 				return this.$store.dispatch('reservations/deleteMaster');
 			},
-
-			getTable() {
-				return this.showTable = !this.showTable;
-			}
 		}
 
 	}

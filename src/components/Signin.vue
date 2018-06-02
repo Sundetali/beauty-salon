@@ -4,10 +4,10 @@
 			<h2 class="text-center">Вход в ZAPIS'KZ</h2>
 			<form @submit.prevent>
 				  <div class="form-group">
-				    <input type="phoe" class="form-control" id="phone" placeholder="Номер телефона">
+				    <input type="phoe" class="form-control" id="phone" placeholder="Номер телефона" autocomplete="off">
 				  </div>
 				  <div class="form-group">
-				    <input type="password" class="form-control" id="password" placeholder="Пароль">
+				    <input type="password" class="form-control" id="password" placeholder="Пароль" autocomplete="off">
 				  </div>
 				  <router-link :to="'/forgot-password'" tag='a' class="text-right d-block">Забыли пароль?</router-link>
 				<input type="button" value="ВОЙТИ" class="btn btn-green">

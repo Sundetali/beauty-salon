@@ -4,7 +4,7 @@
 			<h2 class="text-center">Забыли пароль</h2>
 			<form @submit.prevent>
 				<div class="form-group">
-				    <input type="phone" class="form-control" id="phone" placeholder="Номер телефона">
+				    <input type="phone" class="form-control" id="phone" placeholder="Номер телефона" autocomplete="off">
 				</div>
 				<input type="button" value="ОТПРАВИТЬ" class="btn btn-green">  
 			</form>

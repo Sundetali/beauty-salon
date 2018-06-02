@@ -18,7 +18,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<router-link to="/instrukciya">
+						<router-link :to="{name: 'manual'}">
 							<img class="banner" src="../assets/img/banner1.jpg" alt="Как записаться онлайн?">	
 						</router-link>		
 					</div>
@@ -36,8 +36,7 @@
 						<div class="col-md-6">
 							<router-link :to="'/salon/'+getElem(item.name)+'-'+item.id"
 										 class="to-salon-data">
-								<div class="item-box d-flex"
-									v-on:click="selectData(item.id)">
+								<div class="item-box d-flex">
 									<img :src="item.img.sample" height="172" width="172" alt="">
 									<div class="items-right d-flex flex-column justify-content-between">
 										<div class="zapis-info">
@@ -51,8 +50,7 @@
 												<span class="ml-2">Сегодня записалось<br>{{item.itemNumber}}  человека </span>
 											</span>
 											<router-link :to="'/salon/'+item.id+'/reservations'">
-												<input type="button" class="btn zapis-button" value="ЗАПИСАТЬСЯ"
-												v-on:click="selectData(item.id)">	
+												<input type="button" class="btn zapis-button" value="ЗАПИСАТЬСЯ">	
 											</router-link>
 										</div>
 									</div>	
@@ -193,10 +191,7 @@
 			},
 		},
 		methods: {
-			selectData(id) {
-				console.log(id);
-				return this.$store.dispatch('reservations/addData', id);
-			},
+		
 			getElem(name) {
 				return name.split(' ').join(''); 
 			},
