@@ -2,7 +2,8 @@
 	<div class="wrapper">
 		<nav class="navbar navbar-expand-md navbar-light">
 			<div class="container">
-				  <router-link tag="a" class="navbar-brand" to="/main"><img src="./assets/img/logo.jpg" width="140px" alt="zapis"></router-link>
+				  <router-link class="navbar-brand" :to="{name: 'main'}"><img src="./assets/img/logo.jpg" width="140px" alt="zapis">
+				  </router-link>
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				    <span class="navbar-toggler-icon"></span>
 				  </button>
@@ -11,7 +12,7 @@
 				      <li class="nav-item">
 				      	Алматы
 				      </li>
-				      	<router-link :to="'/kontakty'"  tag="li"  class="nav-item">
+				      	<router-link :to="{name: 'contacts'}"  tag="li"  class="nav-item">
 						    <a>Контакты</a>
 						</router-link>
 				    </ul>
@@ -19,7 +20,7 @@
 				      	<router-link :to="'/sign-up'" tag="li" class="nav-item">
 						    <a>Регистрация</a>
 						</router-link>
-						<router-link :to="'/vhod'" tag="li" class="nav-item">
+						<router-link :to="'/signin'" tag="li" class="nav-item">
 						    <a>Вход</a>
 						</router-link>
 					    
@@ -53,10 +54,10 @@
 				<div class="container">
 					<div class="row">
 							<ul class="d-flex justify-content-between w-100 mb-0">
-								<li><router-link to='/instrukciya'>Как записаться онлайн?</router-link></li>
+								<li><router-link :to="{name: 'manual'}">Как записаться онлайн?</router-link></li>
 								<li><a href="#">Хотите видеть Ваш салон у нас на сайте?</a></li>
 								<li>
-									<router-link to='/kontakty'>Контакты</router-link>
+									<router-link :to="{name: 'contacts'}">Контакты</router-link>
 								</li>
 								<li>2017 - 2018 © ZAPIS'KZ</li>
 							</ul>

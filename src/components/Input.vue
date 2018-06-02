@@ -7,7 +7,8 @@
         	   class="form-control"
 			   :value="value"
 			   :placeholder="placeholder"
-			   @input="onInput">
+			   @input="onInput"
+			   autocomplete="off">
 
     </div>
 </template>

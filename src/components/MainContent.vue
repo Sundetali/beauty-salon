@@ -6,7 +6,7 @@
 					<div class="col-md-6">
 						<form @submit.prevent>
 							<div class="form-group d-flex">
-							   	<input type="text" class="form-control search-input" id="exampleInputEmail1" placeholder="Найди лучшие салоны">
+							   	<input type="text" class="form-control search-input" id="exampleInputEmail1" placeholder="Найди лучшие салоны" autocomplete="off">
 							  	<button class="search"><i class="fa fa-search"></i></button>
 							</div>
 						</form>
@@ -34,7 +34,7 @@
 				<div class="row">
 					<template v-for="(item, index) in items">
 						<div class="col-md-6">
-							<router-link :to="'/salon/'+item.name+'-'+item.id"
+							<router-link :to="'/salon/'+getElem(item.name)+'-'+item.id"
 										 class="to-salon-data">
 								<div class="item-box d-flex"
 									v-on:click="selectData(item.id)">
@@ -196,6 +196,9 @@
 			selectData(id) {
 				console.log(id);
 				return this.$store.dispatch('reservations/addData', id);
+			},
+			getElem(name) {
+				return name.split(' ').join(''); 
 			},
 		}
 	}

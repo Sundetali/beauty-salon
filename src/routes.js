@@ -3,13 +3,13 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-import Content from './components/MainContent.vue';
-import Kontakty from './components/Kontakti.vue';
+import MainContent from './components/MainContent.vue';
+import Contacts from './components/Contacts.vue';
 import SignUp from './components/Signup.vue';
-import Vhod from './components/Vhod.vue';
+import Signin from './components/Signin.vue';
 import ForgotPassword from './components/ForgotPassword.vue';
 import Salon from './components/Salon.vue';
-import Instrukciya from './components/Instrukciya.vue';
+import Manual from './components/Manual.vue';
 import SalonData from './components/SalonData.vue';
 
 
@@ -17,42 +17,48 @@ import SalonData from './components/SalonData.vue';
 const routes = [
 	{
 		path: '',
-		redirect: {name: 'content'}
+		redirect: {name: 'main'}
 	},
 	{
-		name: 'content',
+		name: 'main',
 		path: '/main',
-		component: Content
+		component: MainContent
 	},
 	{
-		path: '/kontakty',
-		component: Kontakty
+		name: 'contacts',
+		path: '/contacts',
+		component: Contacts
 	},
 	{
+		name: 'signup',
 		path: '/sign-up',
 		component: SignUp,
 	},
 	{
-		path: '/vhod',
-		component: Vhod,
+		name: 'signin',
+		path: '/signin',
+		component: Signin,
 	},
 	{
+		name: 'forgotpassword',
 		path: '/forgot-password',
 		component: ForgotPassword,
 	},
 	{
+		name: 'salon',
 		path: '/salon/:id/reservations',
 		component: Salon,
 	},
 	{
-		path: '/instrukciya',
-		component: Instrukciya,
+		name: 'manual',
+		path: '/manual',
+		component: Manual,
 	},
 	{
+		name: 'salondata',
 		path: '/salon/:nameId',
 		component: SalonData,
 	},
-
 ];
 
 export const router = new VueRouter({

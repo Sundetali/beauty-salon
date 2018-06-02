@@ -4,7 +4,27 @@
 			<div class="row">
 				<h4 class="caption">Контакты</h4>
 				<div class="box d-flex flex-wrap">
-					<div class="map"></div>
+					<yandex-map 
+					  :coords="[43.25192908, 76.92921450]"
+					  zoom="13"
+					  :cluster-options="{
+					    1: {clusterDisableClickZoom: true}
+					  }"
+					  :behaviors="['ruler']"
+					  :controls="['trafficControl']"
+					  :placemarks="placemarks" 
+					  map-type="hybrid"
+					  @map-was-initialized="initHandler"
+					>
+						<ymap-marker 
+					      marker-type="placemark"
+					      :coords="[55.75399400, 37.62209300]"
+					      hint-content="Hint content 1"
+					      :balloon="{header: 'header', body: 'body', footer: 'footer'}"
+					      :icon="{color: 'green', glyph: 'cinema'}"
+					      cluster-name="1"
+					    ></ymap-marker>
+					</yandex-map>
 					<div class="address-wrapper d-flex flex-column">
 						<div class="address address-item">
 							<span class="bold "><i class="fa fa-map-marker"></i>	Адрес:
@@ -34,9 +54,24 @@
 </template>
 
 <script>
-	
+	export default {
+		data() {
+		  return {
+		    placemarks: [
+		      {
+		        coords: [55.75399400, 37.62209300],
+		        properties: {}, // define properties here
+		        options: {}, // define options here
+		        clusterName: "1",
+		        balloonTemplate: '<div>"Your custom template"</div>',
+		        callbacks: { click: function() {} }
+		      }
+		    ]
+		  }
+		}
+       
+    }
 </script>
-
 <style scoped>
 .wrapper-content {
 	min-width: 1044px;
@@ -61,7 +96,7 @@
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.07);
     padding: 15px;
 }
-.box .map {
+.box .ymap-container {
 	width: 350px;
 	height: 350px;
 	border: 1px solid;
