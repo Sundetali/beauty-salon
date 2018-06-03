@@ -1,4 +1,4 @@
-# zapis
+# beauty salon
 
 > A Vue.js project
 
