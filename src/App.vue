@@ -198,5 +198,13 @@
 		body, html {
 			font-size: 10px;
 		}
+		.top-footer .app-screen {
+			margin-top: 1.4rem;
+		}
+	}
+	@media screen and (max-width: 900px) {
+		.top-footer .app-screen {
+			margin-top: 1.4rem;
+		}
 	}
 </style>

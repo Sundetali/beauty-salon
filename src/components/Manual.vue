@@ -3,69 +3,71 @@
 		<div class="container">
 			<h1 class="text-center">Как записаться?</h1>
 			<div class="row">
-				<div class="step w-100">
-					<div class="shadow">
+				<div class="col-sm-10 mx-auto">
+					<div class="step w-100">
+						<div class="shadow">
+						</div>
+						<div class="myrow d-flex ">
+							<div class="step-text w-55">
+								Выбирите<br>Нужный вам салон
+							</div>
+							<div class="img-w">
+								<img src="../assets/img/step1.png" alt="sterp1" class="img1">
+							</div>
+							<div class="count c1"></div>
+						</div>
 					</div>
-					<div class="myrow d-flex ">
-						<div class="step-text w-55">
-							Выбирите<br>Нужный вам салон
+					<div class="step w-100">
+						<div class="shadow">
 						</div>
-						<div class="img-w">
-							<img src="../assets/img/step1.png" alt="sterp1" class="img1">
+						<div class="myrow d-flex ">
+							<div class="step-text">
+								Выбирите<br>нужную услугу
+							</div>
+							<div class="img-w">
+								<img src="../assets/img/step2.png" alt="sterp1" class="img2">
+							</div>
+							<div class="count c2"></div>
 						</div>
-						<div class="count c1"></div>
 					</div>
-				</div>
-				<div class="step w-100">
-					<div class="shadow">
+					<div class="step w-100">
+						<div class="shadow">
+						</div>
+						<div class="myrow d-flex ">
+							<div class="step-text">
+								Подберите<br>время и мастера
+							</div>
+							<div class="img-w">
+								<img src="../assets/img/step3.png" alt="sterp1" class="img3">
+							</div>
+							<div class="count c3"></div>
+						</div>
 					</div>
-					<div class="myrow d-flex ">
-						<div class="step-text">
-							Выбирите<br>нужную услугу
+					<div class="step w-100">
+						<div class="shadow">
 						</div>
-						<div class="img-w">
-							<img src="../assets/img/step2.png" alt="sterp1" class="img2">
+						<div class="myrow d-flex ">
+							<div class="step-text">
+								Подтвердите<br>номер телефона
+							</div>
+							<div class="img-w">
+								<img src="../assets/img/step4.png" alt="sterp1" class="img4">
+							</div>
+							<div class="count c4"></div>
 						</div>
-						<div class="count c2"></div>
 					</div>
-				</div>
-				<div class="step w-100">
-					<div class="shadow">
-					</div>
-					<div class="myrow d-flex ">
-						<div class="step-text">
-							Подберите<br>время и мастера
+					<div class="step w-100">
+						<div class="shadow">
 						</div>
-						<div class="img-w">
-							<img src="../assets/img/step3.png" alt="sterp1" class="img3">
+						<div class="myrow d-flex ">
+							<div class="step-text">
+								Готово!
+							</div>
+							<div class="img-w">
+								<img src="../assets/img/step5.png" alt="sterp1" class="img5">
+							</div>
+							<div class="count c5"></div>
 						</div>
-						<div class="count c3"></div>
-					</div>
-				</div>
-				<div class="step w-100">
-					<div class="shadow">
-					</div>
-					<div class="myrow d-flex ">
-						<div class="step-text">
-							Подтвердите<br>номер телефона
-						</div>
-						<div class="img-w">
-							<img src="../assets/img/step4.png" alt="sterp1" class="img4">
-						</div>
-						<div class="count c4"></div>
-					</div>
-				</div>
-				<div class="step w-100">
-					<div class="shadow">
-					</div>
-					<div class="myrow d-flex ">
-						<div class="step-text">
-							Готово!
-						</div>
-						<div class="img-w">
-							<img src="../assets/img/step5.png" alt="sterp1" class="img5">
-						</div>
-						<div class="count c5"></div>
 					</div>
 				</div>
 				<div class="any-questions w-100">
