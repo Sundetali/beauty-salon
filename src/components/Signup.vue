@@ -1,6 +1,6 @@
 <template>
 	<div class="row justify-content-md-center wrapper-content">
-		<div class="col-md-6">
+		<div class="col-md-6 col-sm-10 mx-auto">
 			<h2 class="text-center">Создание учетной записи</h2>
 			<template  v-if="!formSubmited">
 				<form @submit.prevent="formSubmited = true">
@@ -17,7 +17,7 @@
 		                </app-input>
 				  	</div>
 				  	<div class="form-group text-right">
-				  		<input type="button" value="РЕГИСТРАЦИЯ" class="btn btn-green"
+				  		<input type="button" value="РЕГИСТРАЦИЯ" class="btn btn-green d-block w-100"
 				  		 :disabled="done < info.length"
 				  		 v-on:click="formSubmited = !formSubmited">
 			  	  	</div>

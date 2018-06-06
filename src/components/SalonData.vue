@@ -14,7 +14,7 @@
 								<h1 class="name">{{getSalon.name}}</h1>
 							</div>
 						</div>
-						<section class="contacts d-flex justify-content-between align-items-center">
+						<section class="contacts d-flex justify-content-between align-items-center flex-wrap">
 								<div class="contacts-in">
 									<p>
 										<span class="ico-wrap">
@@ -214,7 +214,7 @@
 	    border-color: #bf2e23;
 	}
 	.btn.btn-big {
-	    padding: 10px 22px;
+	    padding: 0.8333rem 1.8333rem;
 	    font-size: 15px;
 	    border-radius: 22px;
 	}
