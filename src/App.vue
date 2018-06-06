@@ -194,4 +194,9 @@
 	footer li {
 		font-size: 1.15rem;
 	}
+	@media screen and (max-width: 600px) {
+		body, html {
+			font-size: 10px;
+		}
+	}
 </style>

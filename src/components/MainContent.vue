@@ -1,5 +1,5 @@
 <template>
-	<div class="wrapper-maincontent">
+	<div class="wrapper-maincontent w-100">
 		<div class="content-search">
 			<div class="container">
 				<div class="row justify-content-center">
@@ -47,7 +47,7 @@
 										<div class="item-bottom d-flex justify-content-between align-items-center  flex-wrap">
 											<span class="reservation-сount d-flex align-items-center">
 												<span class="icon"></span>
-												<span class="ml-2">Сегодня записалось<br>{{item.itemNumber}}  человека </span>
+												<span class="ml-2 mb-2">Сегодня записалось<br>{{item.itemNumber}}  человека </span>
 											</span>
 											<router-link :to="'/salon/'+item.id+'/reservations'">
 												<input type="button" class="btn zapis-button" value="ЗАПИСАТЬСЯ">	
@@ -116,7 +116,7 @@
 		color: #bf2e23;
 	    border-color: #bf2e23;
 	    background-color: #fff;
-	    font-size: 11px;
+	    font-size: 0.9167rem;
 	    padding: 3px 10px;
 	    border-radius: 15px;
 	    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -143,18 +143,18 @@
 	}
 
 	.content-items .zapis-info span {
-		font-size: 13px;
+		font-size: 1.0833rem;
 		display: block;
 		color: #444;
 	}
 	.content-items .zapis-info span.name {
-		font-size: 15px;
+		font-size: 	1.25rem;
 	    font-weight: 550;
 	    margin: 3px 0;
 	} 
 	.reservation-сount span {
 		line-height: 1;
-		font-size: 13px;
+		font-size: 	1.0833rem;
 	    color: #707070;
 	}
 	.reservation-сount .icon {
